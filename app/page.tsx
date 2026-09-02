@@ -1,12 +1,13 @@
 import { ArrowDown, ArrowUpRight, Globe2, Menu } from 'lucide-react';
+import Image from 'next/image';
 
 const entities = [
-  ['01', 'Thara Holding', 'Govern & connect'],
-  ['02', 'Thara Hub', 'Meet & participate'],
-  ['03', 'Venture Building', 'Build new ventures'],
-  ['04', 'Thara Capital', 'Invest & scale'],
-  ['05', 'Business Services', 'Enable operations'],
-  ['06', 'Thara Foundation', 'Create lasting impact'],
+  ['01', 'Thara Holding', 'Govern & connect', 'holding'],
+  ['02', 'Thara Hub', 'Meet & participate', 'hub'],
+  ['03', 'Venture Building', 'Build new ventures', 'venture-building'],
+  ['04', 'Thara Capital', 'Invest & scale', 'capital'],
+  ['05', 'Business Services', 'Enable operations', 'business-services'],
+  ['06', 'Thara Foundation', 'Create lasting impact', 'foundation'],
 ];
 
 function TharaMark() {
@@ -23,7 +24,7 @@ export default function Home() {
             <a href="#ecosystem">Our Ecosystem</a><a href="#about">About Thara</a><a href="#impact">Impact</a><a href="#opportunities">Opportunities</a>
           </nav>
           <div className="header-actions">
-            <button className="language" type="button" aria-label="Switch to Arabic"><Globe2 size={15} strokeWidth={1.6} /> العربية</button>
+            <a className="language" href="/ar" aria-label="Switch to Arabic"><Globe2 size={15} strokeWidth={1.6} /> العربية</a>
             <a className="contact-link" href="#contact">Start a conversation <ArrowUpRight size={15} /></a>
             <button className="menu-button" type="button" aria-label="Open menu"><Menu size={21} /></button>
           </div>
@@ -50,8 +51,8 @@ export default function Home() {
           <p>Thara brings the capabilities needed to build, fund and grow businesses into one homegrown ecosystem—designed around the journey, not the silos.</p>
         </div>
         <div className="entity-grid">
-          {entities.map(([number, name, role]) => (
-            <a className="entity-card" href="#contact" key={name}>
+          {entities.map(([number, name, role, slug]) => (
+            <a className="entity-card" href={`/ecosystem/${slug}`} key={name}>
               <span className="entity-number">{number}</span>
               <div><h3>{name}</h3><p>{role}</p></div>
               <ArrowUpRight className="entity-arrow" size={20} strokeWidth={1.4} />
@@ -77,7 +78,7 @@ export default function Home() {
 
       <section className="place-story shell" id="impact">
         <div className="place-image">
-          <img src="/images/thara-courtyard.png" alt="An architectural courtyard shaped by warm materials and majlis hospitality" />
+          <Image src="/images/thara-courtyard.png" alt="An architectural courtyard shaped by warm materials and majlis hospitality" fill sizes="(max-width: 900px) 100vw, 58vw" />
           <span>Born here. Built to go further.</span>
         </div>
         <div className="place-copy">
