@@ -39,3 +39,6 @@ next-env.d.ts
 
 # build info
 tsconfig.tsbuildinfo
+
+# openai sites host (superseded by Vercel)
+.openai/
