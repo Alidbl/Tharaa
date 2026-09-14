@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { entities } from '@/lib/entities';
+import { parentSite, siteForEntity, siteHref } from '@/lib/sites';
 import { layoutCopy } from '@/lib/layout-copy';
 import { SiteHeader } from '../site-header';
 import { SiteFooter } from '../site-footer';
-import { EntitySubnav } from '../entity-subnav';
 import {
   Breadcrumb,
   EntityTail,
@@ -14,7 +14,7 @@ import {
 } from './shared';
 
 export function HoldingLayout({ entity, locale }: LayoutProps) {
-  const { ar, prefix } = entityContext(entity, locale);
+  const { ar } = entityContext(entity, locale);
   const copy = layoutCopy.holding;
 
   return (
@@ -25,7 +25,7 @@ export function HoldingLayout({ entity, locale }: LayoutProps) {
       style={{ '--entity-accent': entity.accent } as React.CSSProperties}
     >
       <section className="lay-holding-hero">
-        <SiteHeader locale={locale} />
+        <SiteHeader locale={locale} entitySlug={entity.slug} />
         <div className="shell lay-holding-hero-inner">
           <Breadcrumb entity={entity} locale={locale} />
           <div className="lay-holding-hero-grid">
@@ -37,8 +37,6 @@ export function HoldingLayout({ entity, locale }: LayoutProps) {
           </div>
         </div>
       </section>
-
-      <EntitySubnav entitySlug={entity.slug} locale={locale} />
 
       <section className="lay-holding-purpose shell">
         <div className="section-kicker" data-reveal="fade">
@@ -69,7 +67,11 @@ export function HoldingLayout({ entity, locale }: LayoutProps) {
         <div className="pillars-table" data-reveal>
           {entities.map((item, index) => (
             <Link
-              href={`${prefix}/ecosystem/${item.slug}`}
+              href={siteHref(
+                siteForEntity(item.slug) ?? parentSite,
+                '',
+                locale,
+              )}
               key={item.slug}
               style={{ '--entity-accent': item.accent } as React.CSSProperties}
             >
@@ -104,7 +106,7 @@ export function HoldingLayout({ entity, locale }: LayoutProps) {
 
       <SectionsList entity={entity} locale={locale} index="04" />
       <EntityTail entity={entity} locale={locale} relatedIndex="05" />
-      <SiteFooter locale={locale} />
+      <SiteFooter locale={locale} entitySlug={entity.slug} />
     </main>
   );
 }

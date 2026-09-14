@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { entities, type Locale } from '@/lib/entities';
+import { parentSite, siteForEntity, siteHref } from '@/lib/sites';
 
 const caption = {
   en: 'Six capabilities on one governed platform. A business can enter at any point and reach every other capability without starting again.',
@@ -84,7 +85,6 @@ function EcosystemArmature({ locale }: { locale: Locale }) {
  * node, so the diagram and the list are read as the same thing.
  */
 export function EcosystemComposition({ locale }: { locale: Locale }) {
-  const pre = locale === 'ar' ? '/ar' : '';
   return (
     <div className="eco">
       <EcosystemArmature locale={locale} />
@@ -92,7 +92,11 @@ export function EcosystemComposition({ locale }: { locale: Locale }) {
         {entities.map((entity, index) => (
           <Link
             className={`eco-row-${index + 1}`}
-            href={`${pre}/ecosystem/${entity.slug}`}
+            href={siteHref(
+              siteForEntity(entity.slug) ?? parentSite,
+              '',
+              locale,
+            )}
             key={entity.slug}
             style={{ '--entity-accent': entity.accent } as React.CSSProperties}
           >

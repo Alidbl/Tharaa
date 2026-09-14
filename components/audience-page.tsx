@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { entities, type Locale } from '@/lib/entities';
 import { audiences } from '@/lib/site-pages';
+import { parentSite, siteForEntity, siteHref } from '@/lib/sites';
 import { SiteHeader } from './site-header';
 import { SiteFooter } from './site-footer';
 
@@ -73,7 +74,11 @@ export function AudiencePage({
           <div className="path-cards" data-reveal>
             {related.map((entity, index) => (
               <Link
-                href={`${pre}/ecosystem/${entity.slug}`}
+                href={siteHref(
+                  siteForEntity(entity.slug) ?? parentSite,
+                  '',
+                  locale,
+                )}
                 key={entity.slug}
                 style={
                   { '--entity-accent': entity.accent } as React.CSSProperties

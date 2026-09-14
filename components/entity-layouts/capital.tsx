@@ -3,7 +3,6 @@ import { ArrowUpRight } from 'lucide-react';
 import { layoutCopy } from '@/lib/layout-copy';
 import { SiteHeader } from '../site-header';
 import { SiteFooter } from '../site-footer';
-import { EntitySubnav } from '../entity-subnav';
 import {
   Breadcrumb,
   EntityTail,
@@ -13,7 +12,7 @@ import {
 } from './shared';
 
 export function CapitalLayout({ entity, locale }: LayoutProps) {
-  const { ar, prefix } = entityContext(entity, locale);
+  const { ar, base } = entityContext(entity, locale);
   const copy = layoutCopy.capital;
 
   return (
@@ -24,7 +23,7 @@ export function CapitalLayout({ entity, locale }: LayoutProps) {
       style={{ '--entity-accent': entity.accent } as React.CSSProperties}
     >
       <section className="lay-capital-hero">
-        <SiteHeader locale={locale} />
+        <SiteHeader locale={locale} entitySlug={entity.slug} />
         <div className="shell lay-capital-hero-inner">
           <Breadcrumb entity={entity} locale={locale} />
           <h1>
@@ -35,8 +34,6 @@ export function CapitalLayout({ entity, locale }: LayoutProps) {
           <p className="lay-capital-lede">{entity.summary[locale]}</p>
         </div>
       </section>
-
-      <EntitySubnav entitySlug={entity.slug} locale={locale} />
 
       <section className="lay-capital-turn shell">
         <p className="capital-turn-label">{copy.turnLabel[locale]}</p>
@@ -86,14 +83,14 @@ export function CapitalLayout({ entity, locale }: LayoutProps) {
             ? 'لا يشكل أي محتوى في هذا الموقع عرضاً أو دعوة للاستثمار أو مشورة استثمارية. تُشارك المستندات التفصيلية مع الأطراف المؤهلة فقط.'
             : 'Nothing on this site constitutes an offer, solicitation or investment advice. Detailed materials are shared only with qualified parties.'}
         </p>
-        <Link href={`${prefix}/ecosystem/capital/governance`}>
+        <Link href={`${base}/governance`}>
           <span>{ar ? 'الحوكمة والإفصاحات' : 'Governance & disclosures'}</span>
           <ArrowUpRight size={14} aria-hidden="true" />
         </Link>
       </section>
 
       <EntityTail entity={entity} locale={locale} relatedIndex="03" />
-      <SiteFooter locale={locale} />
+      <SiteFooter locale={locale} entitySlug={entity.slug} />
     </main>
   );
 }

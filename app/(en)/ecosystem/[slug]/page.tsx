@@ -1,36 +1,17 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { alternates } from '@/lib/seo';
-import { EntityPage } from '@/components/entity-page';
-import { entities, getEntity } from '@/lib/entities';
+import { permanentRedirect } from 'next/navigation';
+import { siteForEntity, siteHref } from '@/lib/sites';
 
-export function generateStaticParams() {
-  return entities.map(({ slug }) => ({ slug }));
-}
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const entity = getEntity(slug);
-  return entity
-    ? {
-        alternates: alternates(`/ecosystem/${slug}`, 'en'),
-        title: `${entity.name.en} — Thara`,
-        description: entity.summary.en,
-        openGraph: { images: [] },
-        twitter: { images: [] },
-      }
-    : {};
-}
-export default async function Page({
+/**
+ * Each company moved to its own address. These pages existed for the
+ * whole of the previous site, so they redirect permanently rather than
+ * disappear.
+ */
+export default async function LegacyEntity({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const entity = getEntity(slug);
-  if (!entity) notFound();
-  return <EntityPage entity={entity} locale="en" />;
+  const site = siteForEntity(slug);
+  permanentRedirect(site ? siteHref(site, '', 'en') : '/ecosystem');
 }

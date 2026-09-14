@@ -3,7 +3,6 @@ import { layoutCopy, stageCopy } from '@/lib/layout-copy';
 import { frames } from '@/lib/media';
 import { SiteHeader } from '../site-header';
 import { SiteFooter } from '../site-footer';
-import { EntitySubnav } from '../entity-subnav';
 import {
   Breadcrumb,
   EntityTail,
@@ -26,7 +25,7 @@ export function FoundationLayout({ entity, locale }: LayoutProps) {
       style={{ '--entity-accent': entity.accent } as React.CSSProperties}
     >
       <section className="lay-fd-hero">
-        <SiteHeader locale={locale} />
+        <SiteHeader locale={locale} entitySlug={entity.slug} />
         <div
           className="lay-fd-image"
           style={{ '--focus': frame.focus } as React.CSSProperties}
@@ -52,8 +51,6 @@ export function FoundationLayout({ entity, locale }: LayoutProps) {
           </div>
         </div>
       </section>
-
-      <EntitySubnav entitySlug={entity.slug} locale={locale} />
 
       {/* The stages of contribution, read as one continuous line. */}
       <section className="fd-stages band band-ink">
@@ -105,7 +102,7 @@ export function FoundationLayout({ entity, locale }: LayoutProps) {
 
       <SectionsList entity={entity} locale={locale} index="03" />
       <EntityTail entity={entity} locale={locale} relatedIndex="04" />
-      <SiteFooter locale={locale} />
+      <SiteFooter locale={locale} entitySlug={entity.slug} />
     </main>
   );
 }

@@ -9,7 +9,7 @@ import {
 } from '@/lib/entity-sections';
 import { SiteHeader } from './site-header';
 import { SiteFooter } from './site-footer';
-import { EntitySubnav } from './entity-subnav';
+import { parentSite, siteBase, siteForEntity, siteHref } from '@/lib/sites';
 
 export function EntitySectionPage({
   entity,
@@ -22,7 +22,10 @@ export function EntitySectionPage({
 }) {
   const ar = locale === 'ar';
   const pre = ar ? '/ar' : '';
-  const base = `${pre}/ecosystem/${entity.slug}`;
+  const site = siteForEntity(entity.slug);
+  const base = site
+    ? siteBase(site, locale)
+    : `${pre}/ecosystem/${entity.slug}`;
   const sections = getEntitySections(entity.slug);
   const index = sections.findIndex((item) => item.slug === section.slug);
   const next = sections[(index + 1) % sections.length];
@@ -36,10 +39,10 @@ export function EntitySectionPage({
       style={{ '--entity-accent': entity.accent } as React.CSSProperties}
     >
       <section className="content-hero">
-        <SiteHeader locale={locale} />
+        <SiteHeader locale={locale} entitySlug={entity.slug} />
         <div className="shell content-hero-copy">
           <div className="entity-breadcrumb">
-            <Link href={`${pre}/ecosystem`}>
+            <Link href={siteHref(parentSite, '/ecosystem', locale)}>
               {ar ? 'المنظومة' : 'Ecosystem'}
             </Link>
             <span>/</span>
@@ -55,8 +58,6 @@ export function EntitySectionPage({
           </div>
         </div>
       </section>
-
-      <EntitySubnav entitySlug={entity.slug} locale={locale} />
 
       <section className="shell content-sections">
         {section.blocks[locale].map((block, blockIndex) => (
@@ -83,7 +84,7 @@ export function EntitySectionPage({
       <section className="entity-cta shell">
         <p>{ar ? 'ابدأ من هنا' : 'Start here'}</p>
         <h2>{section.cta[locale]}</h2>
-        <Link href={`${pre}/contact`}>
+        <Link href={siteHref(parentSite, '/contact', locale)}>
           {ar ? 'ابدأ محادثة' : 'Start a conversation'}{' '}
           <ArrowUpRight size={17} />
         </Link>
@@ -101,7 +102,7 @@ export function EntitySectionPage({
         </div>
       </div>
 
-      <SiteFooter locale={locale} />
+      <SiteFooter locale={locale} entitySlug={entity.slug} />
     </main>
   );
 }

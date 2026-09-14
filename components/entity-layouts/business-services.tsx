@@ -5,7 +5,6 @@ import { layoutCopy } from '@/lib/layout-copy';
 import { frames } from '@/lib/media';
 import { SiteHeader } from '../site-header';
 import { SiteFooter } from '../site-footer';
-import { EntitySubnav } from '../entity-subnav';
 import {
   Breadcrumb,
   EntityTail,
@@ -28,15 +27,13 @@ export function BusinessServicesLayout({ entity, locale }: LayoutProps) {
       style={{ '--entity-accent': entity.accent } as React.CSSProperties}
     >
       <section className="lay-bs-hero">
-        <SiteHeader locale={locale} />
+        <SiteHeader locale={locale} entitySlug={entity.slug} />
         <div className="shell lay-bs-hero-inner">
           <Breadcrumb entity={entity} locale={locale} />
           <p className="lay-bs-lead">{copy.heroLead[locale]}</p>
           <h1>{copy.heroStatement[locale]}</h1>
         </div>
       </section>
-
-      <EntitySubnav entitySlug={entity.slug} locale={locale} />
 
       {/* A register of services, anchored by one frame of the real
           material world these businesses operate in. */}
@@ -118,7 +115,7 @@ export function BusinessServicesLayout({ entity, locale }: LayoutProps) {
 
       <SectionsList entity={entity} locale={locale} index="03" />
       <EntityTail entity={entity} locale={locale} relatedIndex="04" />
-      <SiteFooter locale={locale} />
+      <SiteFooter locale={locale} entitySlug={entity.slug} />
     </main>
   );
 }

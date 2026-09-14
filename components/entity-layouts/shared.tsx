@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { type Entity, type Locale, entities } from '@/lib/entities';
+import { parentSite, siteBase, siteForEntity, siteHref } from '@/lib/sites';
 import {
   getEntitySections,
   relatedCapabilities,
@@ -12,10 +13,15 @@ export type LayoutProps = { entity: Entity; locale: Locale };
 export function entityContext(entity: Entity, locale: Locale) {
   const ar = locale === 'ar';
   const prefix = ar ? '/ar' : '';
+  const site = siteForEntity(entity.slug);
   return {
     ar,
     prefix,
-    base: `${prefix}/ecosystem/${entity.slug}`,
+    site,
+    /** Links within this company's own site stay relative. */
+    base: site ? siteBase(site, locale) : `${prefix}/ecosystem/${entity.slug}`,
+    /** The Thara parent, for contact and the ecosystem overview. */
+    parentHref: (path: string) => siteHref(parentSite, path, locale),
     sections: getEntitySections(entity.slug),
     related: (relatedCapabilities[entity.slug] ?? [])
       .map((slug) => entities.find((item) => item.slug === slug))
@@ -26,10 +32,12 @@ export function entityContext(entity: Entity, locale: Locale) {
 }
 
 export function Breadcrumb({ entity, locale }: LayoutProps) {
-  const { prefix, ar } = entityContext(entity, locale);
+  const { ar } = entityContext(entity, locale);
   return (
     <div className="entity-breadcrumb">
-      <Link href={`${prefix}/ecosystem`}>{ar ? 'المنظومة' : 'Ecosystem'}</Link>
+      <Link href={siteHref(parentSite, '/ecosystem', locale)}>
+        {ar ? 'المنظومة' : 'Ecosystem'}
+      </Link>
       <span>/</span>
       <span>{entity.name[locale]}</span>
     </div>
@@ -70,7 +78,7 @@ export function RelatedCapabilities({
   locale,
   index = '05',
 }: LayoutProps & { index?: string }) {
-  const { prefix, related } = entityContext(entity, locale);
+  const { related } = entityContext(entity, locale);
   const ar = locale === 'ar';
   if (related.length === 0) return null;
   return (
@@ -90,7 +98,7 @@ export function RelatedCapabilities({
       <div className="path-cards" data-reveal>
         {related.map((item, i) => (
           <Link
-            href={`${prefix}/ecosystem/${item.slug}`}
+            href={siteHref(siteForEntity(item.slug) ?? parentSite, '', locale)}
             key={item.slug}
             style={{ '--entity-accent': item.accent } as React.CSSProperties}
           >
@@ -109,12 +117,12 @@ export function RelatedCapabilities({
 }
 
 export function EntityCta({ entity, locale }: LayoutProps) {
-  const { prefix, ar } = entityContext(entity, locale);
+  const { ar } = entityContext(entity, locale);
   return (
     <section className="entity-cta shell">
       <p>{ar ? 'ابدأ من هنا' : 'Start here'}</p>
       <h2>{entity.cta[locale]}</h2>
-      <Link href={`${prefix}/contact`}>
+      <Link href={siteHref(parentSite, '/contact', locale)}>
         <span>{ar ? 'ابدأ محادثة' : 'Start a conversation'}</span>
         <ArrowUpRight size={16} aria-hidden="true" />
       </Link>
@@ -123,12 +131,14 @@ export function EntityCta({ entity, locale }: LayoutProps) {
 }
 
 export function EntityNext({ entity, locale }: LayoutProps) {
-  const { prefix, next, Arrow, ar } = entityContext(entity, locale);
+  const { next, Arrow, ar } = entityContext(entity, locale);
   return (
     <div className="entity-next">
       <div className="shell">
         <span>{ar ? 'التالي في المنظومة' : 'Next in the ecosystem'}</span>
-        <Link href={`${prefix}/ecosystem/${next.slug}`}>
+        <Link
+          href={siteHref(siteForEntity(next.slug) ?? parentSite, '', locale)}
+        >
           <strong>{next.name[locale]}</strong>
           <Arrow size={34} />
         </Link>

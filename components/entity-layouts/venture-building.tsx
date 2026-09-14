@@ -3,11 +3,10 @@ import { ArrowUpRight } from 'lucide-react';
 import { layoutCopy } from '@/lib/layout-copy';
 import { SiteHeader } from '../site-header';
 import { SiteFooter } from '../site-footer';
-import { EntitySubnav } from '../entity-subnav';
 import { EntityTail, type LayoutProps, entityContext } from './shared';
 
 export function VentureBuildingLayout({ entity, locale }: LayoutProps) {
-  const { ar, prefix, base, sections } = entityContext(entity, locale);
+  const { ar, base, sections, parentHref } = entityContext(entity, locale);
   const copy = layoutCopy['venture-building'];
 
   return (
@@ -18,7 +17,7 @@ export function VentureBuildingLayout({ entity, locale }: LayoutProps) {
       style={{ '--entity-accent': entity.accent } as React.CSSProperties}
     >
       <section className="lay-vb-hero">
-        <SiteHeader locale={locale} tone="dark" />
+        <SiteHeader locale={locale} tone="dark" entitySlug={entity.slug} />
         <div className="lay-vb-rules" aria-hidden="true">
           <i />
           <i />
@@ -40,8 +39,6 @@ export function VentureBuildingLayout({ entity, locale }: LayoutProps) {
           </h1>
         </div>
       </section>
-
-      <EntitySubnav entitySlug={entity.slug} locale={locale} />
 
       <section className="lay-vb-dark band-ink">
         <div className="shell lay-vb-dark-grid">
@@ -103,14 +100,14 @@ export function VentureBuildingLayout({ entity, locale }: LayoutProps) {
             </Link>
           ))}
         </div>
-        <Link className="text-link vb-contact" href={`${prefix}/contact`}>
+        <Link className="text-link vb-contact" href={parentHref('/contact')}>
           <span>{entity.cta[locale]}</span>
           <ArrowUpRight size={15} aria-hidden="true" />
         </Link>
       </section>
 
       <EntityTail entity={entity} locale={locale} relatedIndex="04" />
-      <SiteFooter locale={locale} />
+      <SiteFooter locale={locale} entitySlug={entity.slug} />
     </main>
   );
 }

@@ -8,6 +8,7 @@ import { JourneySection } from '@/components/journey-section';
 import { entities, type Locale } from '@/lib/entities';
 import { audiences, getSitePage } from '@/lib/site-pages';
 import { frames } from '@/lib/media';
+import { parentSite, siteForEntity, siteHref } from '@/lib/sites';
 
 const copy = {
   heroEyebrow: {
@@ -193,7 +194,14 @@ export function HomePage({ locale }: { locale: Locale }) {
         >
           <span>{copy.stripLabel[locale]}</span>
           {entities.map((entity, index) => (
-            <Link href={`${pre}/ecosystem/${entity.slug}`} key={entity.slug}>
+            <Link
+              href={siteHref(
+                siteForEntity(entity.slug) ?? parentSite,
+                '',
+                locale,
+              )}
+              key={entity.slug}
+            >
               <i>{`0${index + 1}`}</i>
               {entity.name[locale]}
             </Link>

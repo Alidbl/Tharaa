@@ -5,7 +5,6 @@ import { layoutCopy } from '@/lib/layout-copy';
 import { frames } from '@/lib/media';
 import { SiteHeader } from '../site-header';
 import { SiteFooter } from '../site-footer';
-import { EntitySubnav } from '../entity-subnav';
 import {
   Breadcrumb,
   EntityTail,
@@ -14,7 +13,7 @@ import {
 } from './shared';
 
 export function HubLayout({ entity, locale }: LayoutProps) {
-  const { ar, prefix, base, sections } = entityContext(entity, locale);
+  const { ar, base, sections, parentHref } = entityContext(entity, locale);
   const copy = layoutCopy.hub;
   const frame = frames.majlis;
 
@@ -27,7 +26,7 @@ export function HubLayout({ entity, locale }: LayoutProps) {
     >
       {/* The Hub opens on people, not on a headline. */}
       <section className="lay-hub-hero">
-        <SiteHeader locale={locale} />
+        <SiteHeader locale={locale} entitySlug={entity.slug} />
         <div
           className="lay-hub-image"
           style={{ '--focus': frame.focus } as React.CSSProperties}
@@ -50,14 +49,12 @@ export function HubLayout({ entity, locale }: LayoutProps) {
         </div>
       </section>
 
-      <EntitySubnav entitySlug={entity.slug} locale={locale} />
-
       <section className="lay-hub-band shell">
         <div className="hub-band-grid">
           <h1>{entity.statement[locale]}</h1>
           <div>
             <p>{copy.bandLead[locale]}</p>
-            <Link className="hub-band-button" href={`${prefix}/contact`}>
+            <Link className="hub-band-button" href={parentHref('/contact')}>
               <span>{entity.cta[locale]}</span>
               <ArrowUpRight size={15} aria-hidden="true" />
             </Link>
@@ -108,7 +105,7 @@ export function HubLayout({ entity, locale }: LayoutProps) {
       </section>
 
       <EntityTail entity={entity} locale={locale} relatedIndex="03" />
-      <SiteFooter locale={locale} />
+      <SiteFooter locale={locale} entitySlug={entity.slug} />
     </main>
   );
 }
