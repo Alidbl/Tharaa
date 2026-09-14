@@ -14,8 +14,6 @@ export function VentureBuildingLayout({ entity, locale }: LayoutProps) {
     <main
       id="main"
       tabIndex={-1}
-      dir={ar ? 'rtl' : 'ltr'}
-      lang={locale}
       className={`entity-page lay-vb theme-${entity.slug}`}
       style={{ '--entity-accent': entity.accent } as React.CSSProperties}
     >
@@ -45,9 +43,9 @@ export function VentureBuildingLayout({ entity, locale }: LayoutProps) {
 
       <EntitySubnav entitySlug={entity.slug} locale={locale} />
 
-      <section className="lay-vb-dark">
+      <section className="lay-vb-dark band-ink">
         <div className="shell lay-vb-dark-grid">
-          <div className="section-kicker light">
+          <div className="section-kicker light" data-reveal="fade">
             <span>01</span>
             <span>{ar ? 'ما نفعله' : 'What we do'}</span>
           </div>
@@ -60,7 +58,7 @@ export function VentureBuildingLayout({ entity, locale }: LayoutProps) {
       </section>
 
       <section className="lay-vb-focus shell">
-        <div className="section-kicker">
+        <div className="section-kicker" data-reveal="fade">
           <span>02</span>
           <span>{copy.focusLabel[locale]}</span>
         </div>
@@ -69,10 +67,12 @@ export function VentureBuildingLayout({ entity, locale }: LayoutProps) {
             {ar ? 'قدرات مصممة للبناء.' : 'Capability built for building.'}
           </h2>
         </div>
-        <div className="vb-ghost-list">
+        <div className="vb-ghost-list" data-reveal>
           {entity.offers[locale].map((offer, index) => (
             <div key={offer.title}>
-              <span className="ghost-number">0{index + 1}</span>
+              <span className="ghost-number">
+                {String(index + 1).padStart(2, '0')}
+              </span>
               <div>
                 <h3>{offer.title}</h3>
                 <p>{offer.text}</p>
@@ -83,14 +83,14 @@ export function VentureBuildingLayout({ entity, locale }: LayoutProps) {
       </section>
 
       <section className="lay-vb-stages shell">
-        <div className="section-kicker">
+        <div className="section-kicker" data-reveal="fade">
           <span>03</span>
           <span>{ar ? 'المسار' : 'The path'}</span>
         </div>
-        <ol className="vb-stage-row">
+        <ol className="stage-track" data-animate>
           {entity.steps[locale].map((step, index) => (
-            <li key={step}>
-              <span>0{index + 1}</span>
+            <li key={step} style={{ '--i': index } as React.CSSProperties}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
               <strong>{step}</strong>
             </li>
           ))}
@@ -98,12 +98,14 @@ export function VentureBuildingLayout({ entity, locale }: LayoutProps) {
         <div className="vb-section-links">
           {sections.map((section) => (
             <Link href={`${base}/${section.slug}`} key={section.slug}>
-              {section.nav[locale]} <ArrowUpRight size={15} />
+              <span>{section.nav[locale]}</span>
+              <ArrowUpRight size={14} aria-hidden="true" />
             </Link>
           ))}
         </div>
         <Link className="text-link vb-contact" href={`${prefix}/contact`}>
-          {entity.cta[locale]} <ArrowUpRight size={16} />
+          <span>{entity.cta[locale]}</span>
+          <ArrowUpRight size={15} aria-hidden="true" />
         </Link>
       </section>
 

@@ -20,8 +20,6 @@ export function CapitalLayout({ entity, locale }: LayoutProps) {
     <main
       id="main"
       tabIndex={-1}
-      dir={ar ? 'rtl' : 'ltr'}
-      lang={locale}
       className={`entity-page lay-capital theme-${entity.slug}`}
       style={{ '--entity-accent': entity.accent } as React.CSSProperties}
     >
@@ -54,25 +52,25 @@ export function CapitalLayout({ entity, locale }: LayoutProps) {
         </div>
       </section>
 
-      <section className="lay-capital-offers">
+      <section className="lay-capital-offers band-ink">
         <div className="shell">
-          <div className="section-kicker light">
+          <div className="section-kicker light" data-reveal="fade">
             <span>01</span>
             <span>{ar ? 'ما نقدمه' : 'What we offer'}</span>
           </div>
-          <div className="capital-offer-grid">
+          <div className="capital-offer-grid" data-reveal>
             {entity.offers[locale].map((offer, index) => (
               <article key={offer.title}>
-                <span>0{index + 1}</span>
+                <span>{String(index + 1).padStart(2, '0')}</span>
                 <h3>{offer.title}</h3>
                 <p>{offer.text}</p>
               </article>
             ))}
           </div>
-          <ol className="capital-steps">
+          <ol className="stage-track" data-animate>
             {entity.steps[locale].map((step, index) => (
-              <li key={step}>
-                <span>0{index + 1}</span>
+              <li key={step} style={{ '--i': index } as React.CSSProperties}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
                 <strong>{step}</strong>
               </li>
             ))}
@@ -89,8 +87,8 @@ export function CapitalLayout({ entity, locale }: LayoutProps) {
             : 'Nothing on this site constitutes an offer, solicitation or investment advice. Detailed materials are shared only with qualified parties.'}
         </p>
         <Link href={`${prefix}/ecosystem/capital/governance`}>
-          {ar ? 'الحوكمة والإفصاحات' : 'Governance & disclosures'}{' '}
-          <ArrowUpRight size={15} />
+          <span>{ar ? 'الحوكمة والإفصاحات' : 'Governance & disclosures'}</span>
+          <ArrowUpRight size={14} aria-hidden="true" />
         </Link>
       </section>
 

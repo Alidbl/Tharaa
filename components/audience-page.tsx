@@ -7,6 +7,27 @@ import { SiteFooter } from './site-footer';
 
 type Audience = (typeof audiences)[number];
 
+const copy = {
+  eyebrow: { en: 'Your path through Thara', ar: 'مسارك في ثرى' },
+  masthead: { en: 'WHO WE WORK WITH', ar: 'من نخدم' },
+  helpLabel: { en: 'How Thara can help', ar: 'كيف يمكن لثرى مساعدتك' },
+  helpTitle: {
+    en: ['One ecosystem,', 'shaped around your need.'],
+    ar: ['منظومة واحدة،', 'مصممة حول احتياجك.'],
+  },
+  helpLead: {
+    en: 'Start anywhere in the ecosystem. We connect your need with the right capabilities and make the next step clear.',
+    ar: 'يمكنك البدء من أي مكان في المنظومة. سنربط احتياجك بالقدرات المناسبة ونجعل الخطوة التالية واضحة.',
+  },
+  otherLabel: { en: 'Other paths', ar: 'مسارات أخرى' },
+  ctaKicker: { en: 'Your next step', ar: 'خطوتك التالية' },
+  ctaTitle: {
+    en: 'Tell us what you are building.',
+    ar: 'أخبرنا بما تريد بناءه.',
+  },
+  ctaAction: { en: 'Start a conversation', ar: 'ابدأ محادثة' },
+};
+
 export function AudiencePage({
   audience,
   locale,
@@ -20,88 +41,83 @@ export function AudiencePage({
     entities.find((entity) => entity.slug === slug)!,
   );
   const Arrow = ar ? ArrowLeft : ArrowRight;
+
   return (
-    <main
-      id="main"
-      tabIndex={-1}
-      dir={ar ? 'rtl' : 'ltr'}
-      lang={locale}
-      className="audience-page"
-    >
+    <main id="main" tabIndex={-1} className="audience-page">
       <section className="content-hero">
         <SiteHeader locale={locale} />
         <div className="shell content-hero-copy">
-          <p className="content-eyebrow">
-            {ar ? 'مسارك في ثرى' : 'Your path through Thara'}
-          </p>
+          <p className="content-eyebrow">{copy.eyebrow[locale]}</p>
           <h1>{ar ? audience.ar : audience.en}</h1>
           <div className="content-hero-foot">
-            <span>{ar ? 'من نخدم' : 'WHO WE WORK WITH'}</span>
+            <span>{copy.masthead[locale]}</span>
             <p>{ar ? audience.needAr : audience.needEn}</p>
           </div>
         </div>
       </section>
 
-      <section className="path-section shell">
-        <div className="section-kicker">
-          <span>01</span>
-          <span>{ar ? 'كيف يمكن لثرى مساعدتك' : 'How Thara can help'}</span>
-        </div>
-        <div className="path-intro">
-          <h2>
-            {ar
-              ? 'منظومة واحدة، مصممة حول احتياجك.'
-              : 'One ecosystem, shaped around your need.'}
-          </h2>
-          <p>
-            {ar
-              ? 'يمكنك البدء من أي مكان في المنظومة. سنربط احتياجك بالقدرات المناسبة ونجعل الخطوة التالية واضحة.'
-              : 'Start anywhere in the ecosystem. We connect your need with the right capabilities and make the next step clear.'}
-          </p>
-        </div>
-        <div className="path-cards">
-          {related.map((entity, index) => (
-            <Link
-              href={`${pre}/ecosystem/${entity.slug}`}
-              key={entity.slug}
-              style={
-                { '--entity-accent': entity.accent } as React.CSSProperties
-              }
-            >
-              <span>0{index + 1}</span>
-              <h3>{entity.name[locale]}</h3>
-              <p>{entity.summary[locale]}</p>
-              <ArrowUpRight size={20} />
-            </Link>
-          ))}
+      <section className="band band-sand path-section">
+        <div className="shell">
+          <div className="section-kicker" data-reveal="fade">
+            <span>01</span>
+            <span>{copy.helpLabel[locale]}</span>
+          </div>
+          <div className="path-intro" data-reveal>
+            <h2>
+              {copy.helpTitle[locale][0]}
+              <br />
+              {copy.helpTitle[locale][1]}
+            </h2>
+            <p>{copy.helpLead[locale]}</p>
+          </div>
+          <div className="path-cards" data-reveal>
+            {related.map((entity, index) => (
+              <Link
+                href={`${pre}/ecosystem/${entity.slug}`}
+                key={entity.slug}
+                style={
+                  { '--entity-accent': entity.accent } as React.CSSProperties
+                }
+              >
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h3>
+                  {entity.name[locale]}
+                  <em className="ledger-meaning">{entity.eyebrow[locale]}</em>
+                </h3>
+                <p>{entity.summary[locale]}</p>
+                <ArrowUpRight size={20} strokeWidth={1.5} aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="other-audiences shell">
-        <div className="section-kicker">
-          <span>02</span>
-          <span>{ar ? 'مسارات أخرى' : 'Other paths'}</span>
-        </div>
-        <div className="other-audience-list">
-          {audiences
-            .filter((item) => item.slug !== audience.slug)
-            .map((item) => (
-              <Link href={`${pre}/audiences/${item.slug}`} key={item.slug}>
-                <strong>{ar ? item.ar : item.en}</strong>
-                <Arrow size={20} />
-              </Link>
-            ))}
+      <section className="band band-sand other-audiences">
+        <div className="shell">
+          <div className="section-kicker" data-reveal="fade">
+            <span>02</span>
+            <span>{copy.otherLabel[locale]}</span>
+          </div>
+          <div className="other-audience-list" data-reveal>
+            {audiences
+              .filter((item) => item.slug !== audience.slug)
+              .map((item) => (
+                <Link href={`${pre}/audiences/${item.slug}`} key={item.slug}>
+                  <strong>{ar ? item.ar : item.en}</strong>
+                  <Arrow size={20} aria-hidden="true" />
+                </Link>
+              ))}
+          </div>
         </div>
       </section>
 
       <section className="content-cta">
         <div className="shell">
-          <span>{ar ? 'خطوتك التالية' : 'Your next step'}</span>
-          <h2>
-            {ar ? 'أخبرنا بما تريد بناءه.' : 'Tell us what you are building.'}
-          </h2>
+          <span>{copy.ctaKicker[locale]}</span>
+          <h2>{copy.ctaTitle[locale]}</h2>
           <Link href={`${pre}/contact`}>
-            {ar ? 'ابدأ محادثة' : 'Start a conversation'} <Arrow size={20} />
+            <span>{copy.ctaAction[locale]}</span>
+            <Arrow size={18} aria-hidden="true" />
           </Link>
         </div>
       </section>

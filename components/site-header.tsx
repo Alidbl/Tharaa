@@ -30,11 +30,14 @@ export function SiteHeader({
   const groups = navGroups(locale);
   const pathname = usePathname() ?? (ar ? '/ar' : '/');
   const [open, setOpen] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const [openedOn, setOpenedOn] = useState(pathname);
 
   if (openedOn !== pathname) {
     setOpenedOn(pathname);
     setOpen(false);
+    setOpenGroup(null);
   }
 
   useEffect(() => {
@@ -43,6 +46,25 @@ export function SiteHeader({
       document.body.style.overflow = '';
     };
   }, [open]);
+
+  // Escape closes an open menu from wherever focus happens to be.
+  useEffect(() => {
+    if (!openGroup) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpenGroup(null);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [openGroup]);
+
+  // The bar is transparent over the opening image and resolves into a
+  // solid institutional rule as soon as the page moves.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const isCurrent = (href?: string) => {
     if (!href) return false;
@@ -56,12 +78,14 @@ export function SiteHeader({
       <a className="skip-link" href="#main">
         {ar ? 'تجاوز إلى المحتوى' : 'Skip to content'}
       </a>
-      <header className={`site-header tone-${tone}`}>
+      <header
+        className={`site-header tone-${tone}${scrolled ? ' is-scrolled' : ''}`}
+      >
         <div className="header-left">
           <Link
             className="wordmark"
             href={pre || '/'}
-            aria-label={ar ? 'الصفحة الرئيسية' : 'Thara home'}
+            aria-label={ar ? 'ثرى — الصفحة الرئيسية' : 'Thara — home'}
           >
             <TharaMark />
             <span>{t.brand[locale]}</span>
@@ -72,7 +96,17 @@ export function SiteHeader({
             aria-label={ar ? 'التنقل الرئيسي' : 'Primary navigation'}
           >
             {groups.map((group) => (
-              <div className="nav-group" key={group.label.en}>
+              <div
+                className="nav-group"
+                key={group.label.en}
+                onBlur={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget)) {
+                    setOpenGroup((current) =>
+                      current === group.label.en ? null : current,
+                    );
+                  }
+                }}
+              >
                 {group.href ? (
                   <Link
                     href={group.href}
@@ -81,11 +115,26 @@ export function SiteHeader({
                     {group.label[locale]}
                   </Link>
                 ) : (
-                  <button type="button" className="nav-trigger">
+                  /* No landing page of its own, so the label is a real
+                     disclosure: it works by pointer, keyboard and touch. */
+                  <button
+                    type="button"
+                    className="nav-trigger"
+                    aria-haspopup="true"
+                    aria-expanded={openGroup === group.label.en}
+                    onClick={() =>
+                      setOpenGroup((current) =>
+                        current === group.label.en ? null : group.label.en,
+                      )
+                    }
+                  >
                     {group.label[locale]}
                   </button>
                 )}
-                <div className="nav-dropdown">
+                <div
+                  className="nav-dropdown"
+                  data-open={openGroup === group.label.en || undefined}
+                >
                   <div className="nav-dropdown-inner">
                     {group.links.map((link) => (
                       <Link
@@ -106,11 +155,18 @@ export function SiteHeader({
         </div>
 
         <div className="header-actions">
-          <Link className="language" href={alternateLocalePath(pathname)}>
-            <Globe2 size={15} strokeWidth={1.6} /> {t.otherLanguage[locale]}
+          <Link
+            className="language"
+            href={alternateLocalePath(pathname)}
+            lang={ar ? 'en' : 'ar'}
+            hrefLang={ar ? 'en' : 'ar'}
+          >
+            <Globe2 size={14} strokeWidth={1.6} aria-hidden="true" />{' '}
+            {t.otherLanguage[locale]}
           </Link>
           <Link className="contact-link" href={`${pre}/contact`}>
-            {t.contact[locale]} <ArrowUpRight size={15} />
+            <span>{t.contact[locale]}</span>
+            <ArrowUpRight size={15} aria-hidden="true" />
           </Link>
           <button
             className="menu-button"
@@ -119,18 +175,14 @@ export function SiteHeader({
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <Menu size={21} />
+            <Menu size={19} aria-hidden="true" />
+            <span aria-hidden="true">{t.menu[locale]}</span>
           </button>
         </div>
       </header>
 
       {open && (
-        <dialog
-          open
-          className="mobile-menu"
-          dir={ar ? 'rtl' : 'ltr'}
-          aria-label={t.menu[locale]}
-        >
+        <dialog open className="mobile-menu" aria-label={t.menu[locale]}>
           <div className="mobile-menu-top shell">
             <Link className="wordmark" href={pre || '/'}>
               <TharaMark />
@@ -141,7 +193,8 @@ export function SiteHeader({
               aria-label={t.close[locale]}
               onClick={() => setOpen(false)}
             >
-              <X size={22} />
+              <span aria-hidden="true">{t.close[locale]}</span>
+              <X size={20} aria-hidden="true" />
             </button>
           </div>
           <nav
@@ -165,10 +218,16 @@ export function SiteHeader({
           </nav>
           <div className="mobile-menu-foot shell">
             <Link className="contact-link" href={`${pre}/contact`}>
-              {t.contact[locale]} <ArrowUpRight size={15} />
+              <span>{t.contact[locale]}</span>
+              <ArrowUpRight size={15} aria-hidden="true" />
             </Link>
-            <Link className="language" href={alternateLocalePath(pathname)}>
-              <Globe2 size={15} /> {t.otherLanguage[locale]}
+            <Link
+              className="language"
+              href={alternateLocalePath(pathname)}
+              lang={ar ? 'en' : 'ar'}
+              hrefLang={ar ? 'en' : 'ar'}
+            >
+              <Globe2 size={14} aria-hidden="true" /> {t.otherLanguage[locale]}
             </Link>
           </div>
         </dialog>

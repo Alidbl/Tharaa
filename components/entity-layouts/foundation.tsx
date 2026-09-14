@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { layoutCopy, stageCopy } from '@/lib/layout-copy';
+import { frames } from '@/lib/media';
 import { SiteHeader } from '../site-header';
 import { SiteFooter } from '../site-footer';
 import { EntitySubnav } from '../entity-subnav';
@@ -15,22 +16,24 @@ export function FoundationLayout({ entity, locale }: LayoutProps) {
   const { ar } = entityContext(entity, locale);
   const copy = layoutCopy.foundation;
   const stages = stageCopy.foundation[locale];
+  const frame = frames.ground;
 
   return (
     <main
       id="main"
       tabIndex={-1}
-      dir={ar ? 'rtl' : 'ltr'}
-      lang={locale}
       className={`entity-page lay-fd theme-${entity.slug}`}
       style={{ '--entity-accent': entity.accent } as React.CSSProperties}
     >
       <section className="lay-fd-hero">
         <SiteHeader locale={locale} />
-        <div className="lay-fd-image">
+        <div
+          className="lay-fd-image"
+          style={{ '--focus': frame.focus } as React.CSSProperties}
+        >
           <Image
-            src="/images/thara-courtyard.png"
-            alt=""
+            src={frame.src}
+            alt={frame.alt[locale]}
             fill
             sizes="100vw"
             priority
@@ -42,36 +45,41 @@ export function FoundationLayout({ entity, locale }: LayoutProps) {
           <div className="lay-fd-panel">
             <div className="fd-panel-label">
               <span>{copy.panelLabel[locale]}</span>
-              <i />
+              <i aria-hidden="true" />
             </div>
             <h2>{copy.panelTitle[locale]}</h2>
             <p className="fd-panel-lead">{copy.panelLead[locale]}</p>
-            <div className="fd-timeline">
-              {entity.steps[locale].map((step, index) => (
-                <article
-                  key={step}
-                  className={`fd-stage fd-stage-${index % 3}`}
-                >
-                  <strong>{step}</strong>
-                  <p>{stages[index]}</p>
-                </article>
-              ))}
-            </div>
-            <div className="fd-scrubber" aria-hidden="true">
-              <i />
-            </div>
           </div>
         </div>
       </section>
 
       <EntitySubnav entitySlug={entity.slug} locale={locale} />
 
+      {/* The stages of contribution, read as one continuous line. */}
+      <section className="fd-stages band band-ink">
+        <div className="shell">
+          <div className="section-kicker light">
+            <span>01</span>
+            <span>{ar ? 'كيف يتشكّل الأثر' : 'How impact is built'}</span>
+          </div>
+          <ol className="stage-track" data-animate>
+            {entity.steps[locale].map((step, index) => (
+              <li key={step} style={{ '--i': index } as React.CSSProperties}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <strong>{step}</strong>
+                <p>{stages[index]}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       <section className="lay-fd-focus shell">
-        <div className="section-kicker">
-          <span>01</span>
+        <div className="section-kicker" data-reveal="fade">
+          <span>02</span>
           <span>{copy.focusLabel[locale]}</span>
         </div>
-        <div className="fd-focus-head">
+        <div className="fd-focus-head" data-reveal>
           <h2>
             {ar
               ? 'أثر ينبع من ريادة الأعمال.'
@@ -79,24 +87,24 @@ export function FoundationLayout({ entity, locale }: LayoutProps) {
           </h2>
           <p>{entity.summary[locale]}</p>
         </div>
-        <div className="fd-focus-grid">
+        <div className="fd-focus-grid" data-reveal>
           {entity.offers[locale].map((offer, index) => (
             <article key={offer.title}>
-              <span>0{index + 1}</span>
+              <span>{String(index + 1).padStart(2, '0')}</span>
               <h3>{offer.title}</h3>
               <p>{offer.text}</p>
             </article>
           ))}
         </div>
-        <div className="fd-serves">
+        <div className="fd-serves" data-reveal="fade">
           {entity.serves[locale].map((item) => (
             <span key={item}>{item}</span>
           ))}
         </div>
       </section>
 
-      <SectionsList entity={entity} locale={locale} index="02" />
-      <EntityTail entity={entity} locale={locale} relatedIndex="03" />
+      <SectionsList entity={entity} locale={locale} index="03" />
+      <EntityTail entity={entity} locale={locale} relatedIndex="04" />
       <SiteFooter locale={locale} />
     </main>
   );

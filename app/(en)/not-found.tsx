@@ -23,7 +23,7 @@ export default function NotFound() {
         </div>
       </section>
 
-      <section className="notfound-links shell">
+      <section className="notfound-links shell" data-reveal>
         <Link href="/ecosystem">
           Our ecosystem <ArrowUpRight size={18} />
         </Link>

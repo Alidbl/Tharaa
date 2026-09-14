@@ -32,8 +32,6 @@ export function EntitySectionPage({
     <main
       id="main"
       tabIndex={-1}
-      dir={ar ? 'rtl' : 'ltr'}
-      lang={locale}
       className={`entity-page entity-section-page theme-${entity.slug}`}
       style={{ '--entity-accent': entity.accent } as React.CSSProperties}
     >
@@ -60,10 +58,10 @@ export function EntitySectionPage({
 
       <EntitySubnav entitySlug={entity.slug} locale={locale} />
 
-      <section className="content-sections shell">
+      <section className="shell content-sections">
         {section.blocks[locale].map((block, blockIndex) => (
-          <article key={block.title} id={`block-${blockIndex + 1}`}>
-            <span>0{blockIndex + 1}</span>
+          <article key={block.title} id={`block-${blockIndex + 1}`} data-reveal>
+            <span>{String(blockIndex + 1).padStart(2, '0')}</span>
             <div>
               <h2>{block.title}</h2>
               <p>{block.text}</p>

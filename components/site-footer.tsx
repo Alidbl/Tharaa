@@ -10,6 +10,25 @@ export function SiteFooter({ locale }: { locale: Locale }) {
   const pre = ar ? '/ar' : '';
   return (
     <footer className="footer">
+      <div className="shell footer-top">
+        <p className="footer-statement">
+          {ar ? (
+            <>
+              المنظومة بأكملها. <em>من البداية إلى النهاية.</em>
+            </>
+          ) : (
+            <>
+              The whole ecosystem. <em>End to end.</em>
+            </>
+          )}
+        </p>
+        <div className="footer-coords">
+          <span dir="ltr">25.4052° N</span>
+          <span dir="ltr">55.5136° E</span>
+          <span>{t.location[locale]}</span>
+        </div>
+      </div>
+
       <div className="shell footer-grid">
         <div>
           <Link className="wordmark footer-brand" href={pre || '/'}>
@@ -65,6 +84,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <Link href={`${pre}/contact`}>{t.careers[locale]}</Link>
         </div>
       </div>
+
       <div className="shell footer-bottom">
         <span>© 2026 {t.brand[locale]}</span>
         <span>{t.location[locale]}</span>

@@ -21,8 +21,6 @@ export function HoldingLayout({ entity, locale }: LayoutProps) {
     <main
       id="main"
       tabIndex={-1}
-      dir={ar ? 'rtl' : 'ltr'}
-      lang={locale}
       className={`entity-page lay-holding theme-${entity.slug}`}
       style={{ '--entity-accent': entity.accent } as React.CSSProperties}
     >
@@ -43,11 +41,11 @@ export function HoldingLayout({ entity, locale }: LayoutProps) {
       <EntitySubnav entitySlug={entity.slug} locale={locale} />
 
       <section className="lay-holding-purpose shell">
-        <div className="section-kicker">
+        <div className="section-kicker" data-reveal="fade">
           <span>01</span>
           <span>{ar ? 'الغاية والرؤية' : 'Purpose & vision'}</span>
         </div>
-        <div className="purpose-pair">
+        <div className="purpose-pair" data-reveal>
           <article className="purpose-card purpose-card-accent">
             <span>{copy.missionLabel[locale]}</span>
             <p>{copy.mission[locale]}</p>
@@ -60,40 +58,42 @@ export function HoldingLayout({ entity, locale }: LayoutProps) {
       </section>
 
       <section className="lay-holding-pillars shell">
-        <div className="section-kicker">
+        <div className="section-kicker" data-reveal="fade">
           <span>02</span>
           <span>{copy.pillarsLabel[locale]}</span>
         </div>
-        <div className="pillars-head">
+        <div className="pillars-head" data-reveal>
           <h2>{ar ? 'ست ركائز. مهمة واحدة.' : 'Six pillars. One mandate.'}</h2>
           <p>{copy.pillarsLead[locale]}</p>
         </div>
-        <div className="pillars-table">
+        <div className="pillars-table" data-reveal>
           {entities.map((item, index) => (
             <Link
               href={`${prefix}/ecosystem/${item.slug}`}
               key={item.slug}
               style={{ '--entity-accent': item.accent } as React.CSSProperties}
             >
-              <span className="pillar-index">0{index + 1}</span>
+              <span className="pillar-index">
+                {String(index + 1).padStart(2, '0')}
+              </span>
               <strong>{item.name[locale]}</strong>
               <em>{item.eyebrow[locale]}</em>
-              <ArrowUpRight size={17} />
+              <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
           ))}
         </div>
       </section>
 
-      <section className="lay-holding-stats">
+      <section className="lay-holding-stats band-ink">
         <div className="shell">
-          <div className="section-kicker light">
+          <div className="section-kicker light" data-reveal="fade">
             <span>03</span>
             <span>{copy.statsLabel[locale]}</span>
           </div>
-          <div className="holding-stat-row">
+          <div className="holding-stat-row" data-reveal>
             {entity.offers[locale].map((offer, index) => (
               <article key={offer.title}>
-                <span>0{index + 1}</span>
+                <span>{String(index + 1).padStart(2, '0')}</span>
                 <h3>{offer.title}</h3>
                 <p>{offer.text}</p>
               </article>

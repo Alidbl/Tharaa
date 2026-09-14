@@ -45,14 +45,14 @@ export function SectionsList({
   if (sections.length === 0) return null;
   return (
     <section className="entity-sections shell" id="sections">
-      <div className="section-kicker">
+      <div className="section-kicker" data-reveal="fade">
         <span>{index}</span>
         <span>{sectionLabels.inThisSection[locale]}</span>
       </div>
-      <div className="entity-section-list">
+      <div className="entity-section-list" data-reveal>
         {sections.map((section, i) => (
           <Link href={`${base}/${section.slug}`} key={section.slug}>
-            <span>0{i + 1}</span>
+            <span>{String(i + 1).padStart(2, '0')}</span>
             <div>
               <h3>{section.nav[locale]}</h3>
               <p>{section.intro[locale]}</p>
@@ -75,11 +75,11 @@ export function RelatedCapabilities({
   if (related.length === 0) return null;
   return (
     <section className="path-section shell">
-      <div className="section-kicker">
+      <div className="section-kicker" data-reveal="fade">
         <span>{index}</span>
         <span>{sectionLabels.related[locale]}</span>
       </div>
-      <div className="path-intro">
+      <div className="path-intro" data-reveal>
         <h2>
           {ar
             ? 'قدرات تعمل إلى جانبنا.'
@@ -87,15 +87,18 @@ export function RelatedCapabilities({
         </h2>
         <p>{sectionLabels.relatedLead[locale]}</p>
       </div>
-      <div className="path-cards">
+      <div className="path-cards" data-reveal>
         {related.map((item, i) => (
           <Link
             href={`${prefix}/ecosystem/${item.slug}`}
             key={item.slug}
             style={{ '--entity-accent': item.accent } as React.CSSProperties}
           >
-            <span>0{i + 1}</span>
-            <h3>{item.name[locale]}</h3>
+            <span>{String(i + 1).padStart(2, '0')}</span>
+            <h3>
+              {item.name[locale]}
+              <em className="ledger-meaning">{item.eyebrow[locale]}</em>
+            </h3>
             <p>{item.summary[locale]}</p>
             <ArrowUpRight size={20} />
           </Link>
@@ -112,7 +115,8 @@ export function EntityCta({ entity, locale }: LayoutProps) {
       <p>{ar ? 'ابدأ من هنا' : 'Start here'}</p>
       <h2>{entity.cta[locale]}</h2>
       <Link href={`${prefix}/contact`}>
-        {ar ? 'ابدأ محادثة' : 'Start a conversation'} <ArrowUpRight size={17} />
+        <span>{ar ? 'ابدأ محادثة' : 'Start a conversation'}</span>
+        <ArrowUpRight size={16} aria-hidden="true" />
       </Link>
     </section>
   );

@@ -5,7 +5,7 @@ import { SiteHeader } from '@/components/site-header';
 
 export default function ArabicNotFound() {
   return (
-    <main id="main" tabIndex={-1} dir="rtl" lang="ar" className="notfound-page">
+    <main id="main" tabIndex={-1} className="notfound-page">
       <section className="content-hero">
         <SiteHeader locale="ar" />
         <div className="shell content-hero-copy">
@@ -21,7 +21,7 @@ export default function ArabicNotFound() {
         </div>
       </section>
 
-      <section className="notfound-links shell">
+      <section className="notfound-links shell" data-reveal>
         <Link href="/ar/ecosystem">
           منظومة ثرى <ArrowUpLeft size={18} />
         </Link>
