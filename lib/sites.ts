@@ -133,16 +133,16 @@ export function siteForHost(host: string | null | undefined): Site | undefined {
  * `path`      — /s/capital/for-founders, used in development and
  *               previews, where wildcard hosts are not available.
  *
- * Set NEXT_PUBLIC_SITE_ROUTING to override.
+ * Subdomain mode is opt-in, because it only works once the DNS records
+ * and domains exist: without them every company link would point at a
+ * host that does not resolve. Set NEXT_PUBLIC_SITE_ROUTING=subdomain in
+ * the deployment once *.thara.ae is live.
+ *
+ * Host routing works either way — capital.thara.ae serves the Capital
+ * site as soon as it resolves, whichever form the links take.
  */
 export const routingMode: 'subdomain' | 'path' =
-  process.env.NEXT_PUBLIC_SITE_ROUTING === 'subdomain'
-    ? 'subdomain'
-    : process.env.NEXT_PUBLIC_SITE_ROUTING === 'path'
-      ? 'path'
-      : process.env.NODE_ENV === 'production'
-        ? 'subdomain'
-        : 'path';
+  process.env.NEXT_PUBLIC_SITE_ROUTING === 'subdomain' ? 'subdomain' : 'path';
 
 const localePrefix = (locale: Locale) => (locale === 'ar' ? '/ar' : '');
 
@@ -202,10 +202,19 @@ export function localeSwitchHref(
   return sitePath(site, inner, other);
 }
 
-/** The canonical production address, used for metadata and sitemaps. */
+/**
+ * The canonical address, used for metadata and sitemaps. It follows the
+ * routing mode: pointing search engines at capital.thara.ae before that
+ * host resolves would canonicalise every company page to a dead address.
+ */
 export function siteCanonical(site: Site, path = '', locale: Locale = 'en') {
   const clean = path && !path.startsWith('/') ? `/${path}` : path;
-  return `https://${site.host}${localePrefix(locale)}${clean || '/'}`;
+  const prefix = localePrefix(locale);
+  if (routingMode === 'subdomain') {
+    return `https://${site.host}${prefix}${clean || '/'}`;
+  }
+  const inner = site.entitySlug ? `/s/${site.id}${clean}` : clean;
+  return `https://${DOMAIN}${prefix}${inner || '/'}`;
 }
 
 export function siteName(site: Site, locale: Locale): string {
