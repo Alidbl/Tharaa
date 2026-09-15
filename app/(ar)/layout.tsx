@@ -9,7 +9,13 @@ export const metadata: Metadata = {
   title: 'ثرى — المنظومة بأكملها، من البداية إلى النهاية',
   description:
     'منظومة متكاملة انطلقت من عجمان تجمع ريادة الأعمال وبناء المشاريع ورأس المال وخدمات الأعمال والأثر المستدام.',
-  icons: { icon: '/favicon.svg' },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '16x16 32x32 48x48' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     title: 'ثرى — المنظومة بأكملها، من البداية إلى النهاية',
     description: 'منظومة متكاملة لريادة الأعمال والاستثمار انطلقت من عجمان.',

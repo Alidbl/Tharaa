@@ -9,7 +9,13 @@ export const metadata: Metadata = {
   title: 'Thara — The Whole Ecosystem, End to End',
   description:
     'An Ajman-born integrated ecosystem connecting entrepreneurship, venture building, capital, business services and lasting impact.',
-  icons: { icon: '/favicon.svg' },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '16x16 32x32 48x48' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     title: 'Thara — The Whole Ecosystem, End to End',
     description:
