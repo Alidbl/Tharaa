@@ -96,7 +96,7 @@ export function SiteHeader({
       <a className="skip-link" href="#main">
         {ar ? 'تجاوز إلى المحتوى' : 'Skip to content'}
       </a>
-      <EcosystemBar locale={locale} current={site} hidden={scrolled} />
+      <EcosystemBar locale={locale} current={site} />
       <header
         className={`site-header tone-${tone}${scrolled ? ' is-scrolled' : ''}${
           ownNav.length > 0 ? ' has-site-nav' : ''

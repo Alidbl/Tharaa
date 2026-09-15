@@ -14,17 +14,15 @@ const copy = {
 /**
  * The ecosystem bar: a thin strip above every site's own header. It
  * says which company you are in and lets you move to any other without
- * feeling like you left. It scrolls away; the THARA half of the lockup
- * is what stays.
+ * feeling like you left. It stays put at every scroll position, so the
+ * switcher is never out of reach.
  */
 export function EcosystemBar({
   locale,
   current,
-  hidden = false,
 }: {
   locale: Locale;
   current: Site;
-  hidden?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const wrap = useRef<HTMLDivElement>(null);
@@ -46,7 +44,7 @@ export function EcosystemBar({
   }, [open]);
 
   return (
-    <div className={`eco-bar${hidden ? ' is-hidden' : ''}`}>
+    <div className="eco-bar">
       <div className="eco-bar-inner shell">
         <div className="eco-switch" ref={wrap}>
           <button

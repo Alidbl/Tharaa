@@ -16,12 +16,13 @@ export function Motion() {
     const targets = Array.from(
       document.querySelectorAll<HTMLElement>('[data-reveal],[data-animate]'),
     );
-    if (targets.length === 0) return;
 
     const reduced = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches;
 
+    // The class also tells the chrome that scripting is running, so it
+    // must land on every page — including ones with nothing to reveal.
     if (reduced || !('IntersectionObserver' in window)) {
       for (const el of targets) el.classList.add('is-in');
       root.classList.add('js-motion');
@@ -37,6 +38,7 @@ export function Motion() {
       else pending.push(el);
     }
     root.classList.add('js-motion');
+    if (pending.length === 0) return;
 
     const observer = new IntersectionObserver(
       (entries) => {

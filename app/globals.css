@@ -694,9 +694,6 @@ h2 em,
   position: fixed;
   top: var(--eco-h);
 }
-.js-motion .site-header.is-scrolled {
-  top: 0;
-}
 .site-header.is-scrolled {
   height: var(--header-h-compact);
   color: var(--ink);
@@ -1354,7 +1351,7 @@ dialog.mobile-menu {
 }
 .eco-figure {
   position: sticky;
-  top: calc(var(--header-h-compact) + 40px);
+  top: calc(var(--eco-h) + var(--header-h-compact) + 40px);
   display: grid;
   gap: 26px;
 }
@@ -1823,8 +1820,8 @@ dialog.mobile-menu {
   height: 1px;
   background: var(--hair-light);
 }
-.content-hero > *:not(.site-header, .skip-link),
-.entity-hero > *:not(.site-header, .skip-link) {
+.content-hero > *:not(.site-header, .skip-link, .eco-bar),
+.entity-hero > *:not(.site-header, .skip-link, .eco-bar) {
   position: relative;
   z-index: 2;
 }
@@ -2306,7 +2303,7 @@ dialog.mobile-menu {
 }
 .contact-copy {
   position: sticky;
-  top: calc(var(--header-h-compact) + 40px);
+  top: calc(var(--eco-h) + var(--header-h-compact) + 40px);
 }
 .contact-note {
   margin: 0 0 clamp(34px, 4vw, 54px);
@@ -2567,7 +2564,7 @@ dialog.mobile-menu {
   top: 0;
 }
 .js-motion .entity-subnav {
-  top: var(--header-h-compact);
+  top: calc(var(--eco-h) + var(--header-h-compact));
   z-index: 30;
   background: color-mix(in srgb, var(--ground), transparent 4%);
   backdrop-filter: blur(16px) saturate(1.1);
@@ -2985,9 +2982,6 @@ dialog.mobile-menu {
 .holding-stat-row article:last-child {
   border-inline-end: 0;
 }
-.holding-stat-row article + article {
-  padding-inline-start: clamp(20px, 2.4vw, 40px);
-}
 .holding-stat-row span {
   font-size: var(--t-label);
   letter-spacing: 0.08em;
@@ -3177,9 +3171,6 @@ dialog.mobile-menu {
 }
 .hub-card-grid article:last-child {
   border-inline-end: 0;
-}
-.hub-card-grid article + article {
-  padding-inline-start: clamp(20px, 2.4vw, 40px);
 }
 .hub-card-grid span {
   font-size: var(--t-label);
@@ -3586,9 +3577,6 @@ dialog.mobile-menu {
 .capital-offer-grid article:last-child {
   border-inline-end: 0;
 }
-.capital-offer-grid article + article {
-  padding-inline-start: clamp(20px, 2.4vw, 40px);
-}
 .capital-offer-grid span {
   font-size: var(--t-label);
   letter-spacing: 0.08em;
@@ -3953,9 +3941,6 @@ dialog.mobile-menu {
 .fd-focus-grid article:last-child {
   border-inline-end: 0;
 }
-.fd-focus-grid article + article {
-  padding-inline-start: clamp(20px, 2.4vw, 40px);
-}
 .fd-focus-grid span {
   font-size: var(--t-label);
   letter-spacing: 0.08em;
@@ -4055,6 +4040,33 @@ dialog.mobile-menu {
   .capital-offer-grid article:nth-child(2n),
   .fd-focus-grid article:nth-child(2n) {
     border-inline-end: 0;
+  }
+  /* A wrapped row needs a rule above it, or the grid reads as one broken
+     column. The rule is drawn from the row's first cell and stretched
+     across both columns, so it spans the grid rather than stopping
+     halfway. */
+  .holding-stat-row article:nth-child(n + 3),
+  .hub-card-grid article:nth-child(n + 3),
+  .capital-offer-grid article:nth-child(n + 3),
+  .fd-focus-grid article:nth-child(n + 3) {
+    position: relative;
+    margin-top: clamp(22px, 2.6vw, 36px);
+  }
+  .holding-stat-row article:nth-child(odd):nth-child(n + 3)::before,
+  .hub-card-grid article:nth-child(odd):nth-child(n + 3)::before,
+  .capital-offer-grid article:nth-child(odd):nth-child(n + 3)::before,
+  .fd-focus-grid article:nth-child(odd):nth-child(n + 3)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    width: 200%;
+    height: 1px;
+    background: var(--hair);
+  }
+  .holding-stat-row article:nth-child(odd):nth-child(n + 3)::before,
+  .capital-offer-grid article:nth-child(odd):nth-child(n + 3)::before {
+    background: var(--hair-light);
   }
   .bs-register-grid {
     grid-template-columns: 1fr;
@@ -4374,9 +4386,19 @@ dialog.mobile-menu {
   .capital-offer-grid article,
   .fd-focus-grid article {
     border-inline-end: 0;
+    border-top: 0;
+    margin-top: 0;
     border-bottom: 1px solid var(--hair);
     padding-inline-start: 0;
     padding-bottom: 28px;
+  }
+  /* At one column each cell already carries its own rule, and the
+     two-column spanning rule would reach past the viewport. */
+  .holding-stat-row article::before,
+  .hub-card-grid article::before,
+  .capital-offer-grid article::before,
+  .fd-focus-grid article::before {
+    display: none;
   }
   .holding-stat-row article,
   .capital-offer-grid article {
@@ -4592,7 +4614,7 @@ dialog.mobile-menu {
 
 /* Anchors must clear the fixed header and any docked sub-navigation */
 [id] {
-  scroll-margin-top: calc(var(--header-h-compact) + 80px);
+  scroll-margin-top: calc(var(--eco-h) + var(--header-h-compact) + 80px);
 }
 
 /* Numerals read as data, everywhere */
@@ -4683,7 +4705,7 @@ dialog.mobile-menu {
   top: 0;
 }
 .js-motion .page-contents {
-  top: var(--header-h-compact);
+  top: calc(var(--eco-h) + var(--header-h-compact));
   z-index: 30;
   background: color-mix(in srgb, var(--ground), transparent 4%);
   backdrop-filter: blur(16px) saturate(1.1);
@@ -4804,10 +4826,6 @@ dialog.mobile-menu {
 }
 .js-motion .eco-bar {
   position: fixed;
-}
-.eco-bar.is-hidden {
-  transform: translateY(-100%);
-  opacity: 0;
 }
 .eco-bar-inner {
   display: flex;
