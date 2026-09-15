@@ -1,16 +1,30 @@
-import { entities } from '@/lib/entities';
 import { getEntitySections } from '@/lib/entity-sections';
-import { SITE } from '@/lib/seo';
+import { siteCanonical, sites, subsidiarySites } from '@/lib/sites';
 import { audiences, sitePages } from '@/lib/site-pages';
+import type { Locale } from '@/lib/entities';
 
-function paths(): string[] {
-  const list = ['', '/ecosystem', '/contact'];
-  for (const page of sitePages) list.push(`/${page.slug}`);
-  for (const audience of audiences) list.push(`/audiences/${audience.slug}`);
-  for (const entity of entities) {
-    list.push(`/ecosystem/${entity.slug}`);
-    for (const section of getEntitySections(entity.slug)) {
-      list.push(`/ecosystem/${entity.slug}/${section.slug}`);
+/** Every canonical address in the ecosystem, in both languages. */
+function entries(): { en: string; ar: string }[] {
+  const list: { en: string; ar: string }[] = [];
+  const pair = (build: (locale: Locale) => string) =>
+    list.push({ en: build('en'), ar: build('ar') });
+
+  const parent = sites[0];
+  for (const path of [
+    '',
+    '/ecosystem',
+    '/contact',
+    ...sitePages.map((page) => `/${page.slug}`),
+    ...audiences.map((audience) => `/audiences/${audience.slug}`),
+  ]) {
+    pair((locale) => siteCanonical(parent, path, locale));
+  }
+
+  // Each company site: its home and every section it publishes.
+  for (const site of subsidiarySites) {
+    pair((locale) => siteCanonical(site, '', locale));
+    for (const section of getEntitySections(site.entitySlug!)) {
+      pair((locale) => siteCanonical(site, `/${section.slug}`, locale));
     }
   }
   return list;
@@ -18,25 +32,21 @@ function paths(): string[] {
 
 export function GET() {
   const today = new Date().toISOString().slice(0, 10);
-  const entries = paths().map((path) => {
-    const en = `${SITE}${path === '' ? '/' : path}`;
-    const ar = `${SITE}/ar${path}`;
-    return [en, ar]
-      .map(
-        (loc) => `  <url>
+  const body = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${entries()
+  .flatMap(({ en, ar }) =>
+    [en, ar].map(
+      (loc) => `  <url>
     <loc>${loc}</loc>
     <lastmod>${today}</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="${en}" />
     <xhtml:link rel="alternate" hreflang="ar" href="${ar}" />
     <xhtml:link rel="alternate" hreflang="x-default" href="${en}" />
   </url>`,
-      )
-      .join('\n');
-  });
-
-  const body = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${entries.join('\n')}
+    ),
+  )
+  .join('\n')}
 </urlset>`;
 
   return new Response(body, {

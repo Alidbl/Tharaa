@@ -1,6 +1,7 @@
 import type { Locale } from './entities';
 import { entities } from './entities';
 import { audiences } from './site-pages';
+import { parentSite, siteForEntity, siteHref } from './sites';
 
 export type NavLink = { href: string; label: Record<Locale, string> };
 export type NavGroup = {
@@ -35,8 +36,10 @@ export function navGroups(locale: Locale): NavGroup[] {
           href: `${pre}/ecosystem`,
           label: { en: 'Ecosystem overview', ar: 'نظرة على المنظومة' },
         },
+        // Each company has its own site now; linking at the old address
+        // would send every visitor through a redirect.
         ...entities.map((entity) => ({
-          href: `${pre}/ecosystem/${entity.slug}`,
+          href: siteHref(siteForEntity(entity.slug) ?? parentSite, '', locale),
           label: entity.name,
         })),
       ],
