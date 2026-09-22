@@ -59,7 +59,7 @@ function EcosystemArmature({ locale }: { locale: Locale }) {
         <g className="eco-core">
           <circle cx="200" cy="200" r="54" stroke="none" />
           <text x="200" y="197" textAnchor="middle">
-            {ar ? 'ثرى' : 'THARA'}
+            {ar ? 'ثرا' : 'THARA'}
           </text>
           <text x="200" y="215" textAnchor="middle" className="eco-core-sub">
             {ar ? 'عجمان' : 'AJMAN'}
@@ -98,7 +98,12 @@ export function EcosystemComposition({ locale }: { locale: Locale }) {
               locale,
             )}
             key={entity.slug}
-            style={{ '--entity-accent': entity.accent } as React.CSSProperties}
+            style={
+              {
+                '--entity-accent': entity.accent,
+                '--entity-accent-text': entity.accentText,
+              } as React.CSSProperties
+            }
           >
             <span className="index-numeral">{`0${index + 1}`}</span>
             <h3 className="ledger-name">

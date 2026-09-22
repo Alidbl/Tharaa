@@ -3,7 +3,7 @@ import type { Locale } from '@/lib/entities';
 import { entities } from '@/lib/entities';
 import { audiences } from '@/lib/site-pages';
 import { t } from '@/lib/nav';
-import { TharaMark } from './site-header';
+import { BrandLogo } from './brand-logo';
 import {
   parentSite,
   siteForEntity,
@@ -47,9 +47,11 @@ export function SiteFooter({
 
       <div className="shell footer-grid">
         <div>
-          <Link className="wordmark footer-brand" href={thara('')}>
-            <TharaMark />
-            <span>{t.brand[locale]}</span>
+          <Link className="site-logo footer-brand" href={thara('')}>
+            <BrandLogo
+              site="thara"
+              label={ar ? 'ثرا — الصفحة الرئيسية' : 'Thara — home'}
+            />
           </Link>
           <p>
             {t.tagline[locale].split('\n').map((line) => (
@@ -91,7 +93,7 @@ export function SiteFooter({
         </div>
         <div>
           <span className="footer-label">{t.explore[locale]}</span>
-          <Link href={thara('/about')}>{ar ? 'عن ثرى' : 'About Thara'}</Link>
+          <Link href={thara('/about')}>{ar ? 'عن ثرا' : 'About Thara'}</Link>
           <Link href={thara('/opportunities')}>
             {ar ? 'الفرص' : 'Opportunities'}
           </Link>
@@ -112,10 +114,10 @@ export function SiteFooter({
 
       <nav
         className="shell eco-band"
-        aria-label={ar ? 'مواقع منظومة ثرى' : 'Thara ecosystem sites'}
+        aria-label={ar ? 'مواقع منظومة ثرا' : 'Thara ecosystem sites'}
       >
         <span className="eco-band-label">
-          {ar ? 'منظومة ثرى' : 'The Thara ecosystem'}
+          {ar ? 'منظومة ثرا' : 'The Thara ecosystem'}
         </span>
         <ul>
           {sites.map((site) => (

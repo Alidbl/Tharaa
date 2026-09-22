@@ -33,18 +33,40 @@
   --ink-45: rgba(20, 23, 26, 0.62);
   --ink-30: rgba(20, 23, 26, 0.34);
 
-  /* --- Brand */
-  --maroon: #6e2638;
-  --maroon-deep: #571d2c;
-  --terracotta: #a85f43;
-  --ochre: #b98a55;
-  --sage: #8c977f;
-  --forest: #26382f;
+  /* --- Brand
+     The six company colours, read straight out of the logo artwork in
+     /Logo: each file is a single flat colour, and these are those
+     values. */
+  --maroon: #5e2a2a; /* Holding, and the parent */
+  --maroon-deep: #45201f;
+  --terracotta: #b85c38; /* Hub */
+  --ochre: #c8922e; /* Ventures */
+  --bronze: #8a7b3b; /* Capital */
+  --taupe: #a98c6b; /* Xperience */
+  --sage: #6e7a66; /* Foundation */
+
+  /* --- The four accent roles.
+     No section names a pigment. Everything draws from these, so a
+     company site re-points them once in its .theme-* block and the
+     whole page follows — bands, rules, buttons, highlights and all.
+     Each is measured rather than picked:
+       --accent         the brand colour: hairlines, marks, small fills
+       --accent-deep    darkened until cream text on it clears 4.5:1
+       --accent-text    darkened until it clears 4.5:1 on that theme's ground
+       --accent-bright  lightened until it clears 4.5:1 on that theme's dark band
+     Maroon is dark enough that its first three roles coincide, and its
+     bright partner is the ecosystem's ochre — lightening maroon itself
+     turns it mauve. */
   --accent: var(--maroon);
+  --accent-deep: #5e2a2a;
+  --accent-text: #5e2a2a;
+  --accent-bright: var(--ochre);
   --entity-accent: var(--maroon);
-  /* Accents are brand colours first; this is the tone small text uses
-     so it always clears 4.5:1 on the sand ground. */
-  --accent-text: var(--maroon);
+  --entity-accent-text: #5e2a2a;
+
+  /* An error stays red whatever colour the site is: a sage-green
+     failure message on the Foundation site would not read as one. */
+  --danger: #a3342f;
 
   /* --- Lines: the primary structural device */
   --hair: rgba(20, 23, 26, 0.12);
@@ -54,8 +76,11 @@
   --line-light: rgba(247, 245, 241, 0.28);
 
   /* --- Dark ground */
-  --dark: #15181a;
-  --dark-deep: #0f1113;
+  /* The parent's dark bands carry the same maroon tint the company
+     sites carry their own colour in, so no section falls back to a
+     neutral black that belongs to no brand. */
+  --dark: #391d1e;
+  --dark-deep: #1d1314;
   --on-dark: #f3f1ec;
   --on-dark-70: rgba(243, 241, 236, 0.74);
   --on-dark-50: rgba(243, 241, 236, 0.6);
@@ -105,7 +130,7 @@
   --card-foreground: var(--ink);
   --popover: var(--surface-strong);
   --popover-foreground: var(--ink);
-  --primary: var(--maroon);
+  --primary: var(--accent);
   --primary-foreground: #fff8f1;
   --secondary: var(--surface);
   --secondary-foreground: var(--ink);
@@ -114,7 +139,7 @@
   --accent-foreground: #fff8f1;
   --border: var(--line);
   --input: var(--line);
-  --ring: var(--maroon);
+  --ring: var(--accent);
   --destructive: #a22d35;
 }
 
@@ -289,7 +314,7 @@ h2 em,
   --band-bg: var(--dark);
 }
 .band-accent {
-  background: var(--maroon);
+  background: var(--accent-deep);
   color: #fdf6ee;
 }
 .band-ink h1,
@@ -371,7 +396,7 @@ h2 em,
   color: var(--on-dark-50);
 }
 .section-kicker.light span:first-child {
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 .section-kicker.light::after {
   background: var(--hair-light);
@@ -500,18 +525,18 @@ h2 em,
 .closing-button:hover,
 .content-cta a:hover,
 .entity-cta > a:hover {
-  background: var(--maroon);
+  background: var(--accent-deep);
   gap: 20px;
 }
 .band-accent .closing-button,
 .content-cta a {
   background: #fdf6ee;
-  color: var(--maroon-deep);
+  color: var(--accent-deep);
 }
 .band-accent .closing-button:hover,
 .content-cta a:hover {
   background: #fff;
-  color: var(--maroon-deep);
+  color: var(--accent-deep);
 }
 
 /* ================================================================
@@ -545,7 +570,7 @@ h2 em,
   inset-inline-start: 0;
   width: 0;
   height: 1px;
-  background: var(--entity-accent, var(--maroon));
+  background: var(--entity-accent, var(--accent));
   transition: width 0.55s var(--ease);
 }
 .ledger > a:hover,
@@ -561,7 +586,7 @@ h2 em,
   padding-top: 0.55em;
 }
 .ledger > a:hover .index-numeral {
-  color: var(--accent-text, var(--maroon));
+  color: var(--accent-text, var(--accent));
 }
 .ledger-name {
   margin: 0;
@@ -595,7 +620,7 @@ h2 em,
     color 0.35s var(--ease);
 }
 .ledger > a:hover svg {
-  color: var(--entity-accent, var(--maroon));
+  color: var(--entity-accent-text, var(--accent));
   transform: translate(4px, -4px);
 }
 [dir='rtl'] .ledger > a:hover svg {
@@ -621,11 +646,11 @@ h2 em,
   color: #fff;
 }
 .band-ink .ledger > a:hover::after {
-  background: var(--ochre);
+  background: var(--accent-bright);
 }
 .band-ink .ledger > a:hover svg,
 .band-ink .ledger > a:hover .index-numeral {
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 
 /* Compact variant: numeral + name + arrow only */
@@ -644,6 +669,19 @@ h2 em,
   --eco-h: 34px;
   /* What the opening of every page has to clear. */
   --chrome-h: calc(var(--header-h) + var(--eco-h));
+  /* The parent lockup is horizontal, so it sits in the standard bar. */
+  --logo-h: 34px;
+  --logo-h-compact: 28px;
+}
+/* A company site carries its stacked lockup — mark over bilingual
+   wordmark — so the bar and everything measured from it grow together.
+   Keying off the header keeps --chrome-h correct on every page without
+   a second set of layout variables. */
+:root:has(.site-header[data-stacked]) {
+  --header-h: 124px;
+  --header-h-compact: 94px;
+  --logo-h: 80px;
+  --logo-h-compact: 62px;
 }
 .site-header {
   /* Absolute by default so a page without scripting never ends up with
@@ -705,34 +743,41 @@ h2 em,
   opacity: 0;
 }
 
-.wordmark {
+/* --- The logo ------------------------------------------------------
+   The artwork is one flat colour on transparency, so it is drawn as an
+   alpha mask filled with currentColor. That is what lets a single file
+   sit on the transparent header over a photograph, on the pale scrolled
+   header and on the dark footer without an inverted second export.
+   aspect-ratio comes from the file, so the box is reserved before the
+   mask loads and the header never shifts. */
+.brand-logo {
+  display: block;
+  height: var(--logo-h);
+  aspect-ratio: var(--logo-ratio);
+  flex: none;
+  background-color: var(--logo-ink, currentColor);
+  -webkit-mask-image: var(--logo);
+  mask-image: var(--logo);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  transition:
+    height 0.4s var(--ease),
+    opacity 0.3s var(--ease);
+}
+.site-logo {
   display: inline-flex;
   align-items: center;
-  gap: 13px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-}
-.brand-mark {
-  position: relative;
-  width: 26px;
-  height: 26px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3px;
-  transform: rotate(45deg);
   flex: none;
 }
-.brand-mark span {
-  background: currentColor;
-  border-radius: 50% 50% 1px 50%;
-  transition: opacity 0.5s var(--ease);
+.site-logo:hover .brand-logo {
+  opacity: 0.72;
 }
-.wordmark:hover .brand-mark span:nth-child(2) {
-  opacity: 0.45;
-}
-.wordmark:hover .brand-mark span:nth-child(3) {
-  opacity: 0.45;
+.site-header.is-scrolled .brand-logo {
+  height: var(--logo-h-compact);
 }
 
 .header-left {
@@ -806,7 +851,7 @@ h2 em,
   background: var(--paper);
   color: var(--ink);
   border: 1px solid var(--hair);
-  border-top: 2px solid var(--maroon);
+  border-top: 2px solid var(--accent);
   box-shadow: 0 24px 60px rgba(20, 23, 26, 0.16);
 }
 .nav-dropdown-inner a {
@@ -820,7 +865,7 @@ h2 em,
     padding-inline-start 0.28s var(--ease);
 }
 .nav-dropdown-inner a:hover {
-  color: var(--maroon);
+  color: var(--accent);
   padding-inline-start: 28px;
 }
 
@@ -925,6 +970,9 @@ dialog.mobile-menu {
   justify-content: space-between;
   border-bottom: 1px solid var(--hair-light);
 }
+.mobile-menu-top .brand-logo {
+  height: min(var(--logo-h), 46px);
+}
 .mobile-menu-top button {
   display: inline-flex;
   align-items: center;
@@ -955,7 +1003,7 @@ dialog.mobile-menu {
   padding-bottom: 12px;
   margin-bottom: 8px;
   border-bottom: 1px solid var(--hair-light);
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 .mobile-menu-body a {
   padding-block: 10px;
@@ -1013,7 +1061,7 @@ dialog.mobile-menu {
   font-family: var(--font-fraunces), Georgia, serif;
   font-style: italic;
   font-weight: 300;
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 [dir='rtl'] .footer-statement em {
   font-family: var(--font-arabic), sans-serif;
@@ -1045,6 +1093,9 @@ dialog.mobile-menu {
 .footer-brand {
   margin-bottom: 20px;
 }
+.footer-brand .brand-logo {
+  height: 42px;
+}
 .footer-grid p {
   margin: 0;
   max-width: 30ch;
@@ -1070,7 +1121,7 @@ dialog.mobile-menu {
   margin-bottom: 8px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--hair-light);
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 .footer-bottom {
   margin-top: clamp(48px, 6vw, 84px);
@@ -1262,7 +1313,7 @@ dialog.mobile-menu {
   text-transform: uppercase;
 }
 .hero-strip-inner > span:first-child {
-  color: var(--ochre);
+  color: var(--accent-bright);
   letter-spacing: var(--track-label);
 }
 .hero-strip-inner a {
@@ -1278,11 +1329,11 @@ dialog.mobile-menu {
 .hero-strip-inner a i {
   font-style: normal;
   font-variant-numeric: tabular-nums;
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 .hero-strip-inner a:hover {
   color: var(--on-dark);
-  border-bottom-color: var(--ochre);
+  border-bottom-color: var(--accent-bright);
 }
 
 /* ================================================================
@@ -1448,8 +1499,8 @@ dialog.mobile-menu {
 .eco:has(.eco-row-5:focus-within) .eco-n5 circle,
 .eco:has(.eco-row-6:hover) .eco-n6 circle,
 .eco:has(.eco-row-6:focus-within) .eco-n6 circle {
-  fill: var(--maroon);
-  stroke: var(--maroon);
+  fill: var(--accent);
+  stroke: var(--accent);
   r: 15;
 }
 .eco:has(.eco-row-1:hover) .eco-n1 text,
@@ -1472,7 +1523,7 @@ dialog.mobile-menu {
 .eco:has(.eco-row-4:hover) .eco-s4,
 .eco:has(.eco-row-5:hover) .eco-s5,
 .eco:has(.eco-row-6:hover) .eco-s6 {
-  stroke: var(--maroon);
+  stroke: var(--accent);
   stroke-dasharray: none;
 }
 
@@ -1535,8 +1586,8 @@ dialog.mobile-menu {
   width: 100%;
   background: linear-gradient(
     90deg,
-    var(--ochre),
-    color-mix(in srgb, var(--maroon), #e3b592 55%)
+    var(--accent-bright),
+    color-mix(in srgb, var(--accent), #e3b592 55%)
   );
   transform-origin: left center;
   transform: scaleX(1);
@@ -1549,8 +1600,8 @@ dialog.mobile-menu {
   transform-origin: right center;
   background: linear-gradient(
     270deg,
-    var(--ochre),
-    color-mix(in srgb, var(--maroon), #e3b592 55%)
+    var(--accent-bright),
+    color-mix(in srgb, var(--accent), #e3b592 55%)
   );
 }
 .js-motion .journey.is-in .journey-track::after {
@@ -1576,8 +1627,8 @@ dialog.mobile-menu {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: var(--ochre);
-  border: 1px solid var(--ochre);
+  background: var(--accent-bright);
+  border: 1px solid var(--accent-bright);
   transition:
     background 0.5s var(--ease),
     border-color 0.5s var(--ease);
@@ -1587,8 +1638,8 @@ dialog.mobile-menu {
   border-color: var(--on-dark-35);
 }
 .js-motion .journey.is-in .journey-node {
-  background: var(--ochre);
-  border-color: var(--ochre);
+  background: var(--accent-bright);
+  border-color: var(--accent-bright);
   transition-delay: calc(var(--i) * 0.16s + 0.25s);
 }
 .journey-step strong {
@@ -1615,7 +1666,7 @@ dialog.mobile-menu {
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 .journey-foot {
   margin-top: clamp(42px, 5vw, 76px);
@@ -1687,7 +1738,7 @@ dialog.mobile-menu {
   color: var(--on-dark-50);
 }
 .place-inner .section-kicker span:first-child {
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 .place-inner .section-kicker::after {
   background: var(--hair-light);
@@ -1747,7 +1798,7 @@ dialog.mobile-menu {
    CLOSING
    ================================================================ */
 .closing {
-  background: var(--maroon);
+  background: var(--accent-deep);
   color: #fdf6ee;
 }
 .closing-inner > p {
@@ -1801,14 +1852,14 @@ dialog.mobile-menu {
   background:
     radial-gradient(
       ellipse at 88% 4%,
-      color-mix(in srgb, var(--entity-accent, var(--maroon)), transparent 58%),
+      color-mix(in srgb, var(--entity-accent, var(--accent)), transparent 58%),
       transparent 52%
     ),
     linear-gradient(
       160deg,
       #15181a 0%,
       #191c1e 58%,
-      color-mix(in srgb, var(--entity-accent, var(--maroon)), #15181a 74%) 100%
+      color-mix(in srgb, var(--entity-accent, var(--accent)), #15181a 74%) 100%
     );
 }
 .content-hero::after,
@@ -1918,7 +1969,7 @@ dialog.mobile-menu {
 .content-sections article > span {
   font-size: var(--t-label);
   letter-spacing: 0.08em;
-  color: var(--accent);
+  color: var(--accent-text);
   font-variant-numeric: tabular-nums;
   padding-top: 0.45em;
 }
@@ -1976,7 +2027,7 @@ dialog.mobile-menu {
 
 /* --- Closing call to action on interior pages --------------------- */
 .content-cta {
-  background: var(--maroon);
+  background: var(--accent-deep);
   color: #fdf6ee;
   padding-block: clamp(64px, 8vw, 130px);
 }
@@ -2082,7 +2133,7 @@ dialog.mobile-menu {
   inset-inline-start: 0;
   width: 0;
   height: 1px;
-  background: var(--entity-accent, var(--maroon));
+  background: var(--entity-accent, var(--accent));
   transition: width 0.55s var(--ease);
 }
 .path-cards a:hover,
@@ -2125,7 +2176,7 @@ dialog.mobile-menu {
     color 0.35s var(--ease);
 }
 .path-cards a:hover svg {
-  color: var(--entity-accent);
+  color: var(--entity-accent-text, var(--accent));
   transform: translate(4px, -4px);
 }
 [dir='rtl'] .path-cards a:hover svg {
@@ -2159,7 +2210,7 @@ dialog.mobile-menu {
   inset-inline-start: 0;
   width: 0;
   height: 1px;
-  background: var(--entity-accent, var(--maroon));
+  background: var(--entity-accent, var(--accent));
   transition: width 0.55s var(--ease);
 }
 .other-audience-list a:hover {
@@ -2182,7 +2233,7 @@ dialog.mobile-menu {
     color 0.3s var(--ease);
 }
 .other-audience-list a:hover svg {
-  color: var(--entity-accent);
+  color: var(--entity-accent-text, var(--accent));
   transform: translateX(4px);
 }
 [dir='rtl'] .other-audience-list a:hover svg {
@@ -2215,7 +2266,7 @@ dialog.mobile-menu {
   inset-inline-start: 0;
   width: 0;
   height: 1px;
-  background: var(--maroon);
+  background: var(--accent);
   transition: width 0.55s var(--ease);
 }
 .audience-list a:hover,
@@ -2235,7 +2286,7 @@ dialog.mobile-menu {
   padding-top: 0.5em;
 }
 .audience-list a:hover span {
-  color: var(--maroon);
+  color: var(--accent);
 }
 .audience-list strong {
   font-family: var(--font-display), sans-serif;
@@ -2259,7 +2310,7 @@ dialog.mobile-menu {
     color 0.35s var(--ease);
 }
 .audience-list a:hover svg {
-  color: var(--maroon);
+  color: var(--accent);
   transform: translate(4px, -4px);
 }
 [dir='rtl'] .audience-list a:hover svg {
@@ -2292,7 +2343,7 @@ dialog.mobile-menu {
   line-height: 1.01;
 }
 .contact-masthead .content-eyebrow {
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 .contact-shell {
   display: grid;
@@ -2335,7 +2386,7 @@ dialog.mobile-menu {
   padding-top: 3px;
 }
 .contact-details a:hover {
-  color: var(--maroon);
+  color: var(--accent);
 }
 .contact-page form,
 .form-success {
@@ -2398,10 +2449,10 @@ dialog.mobile-menu {
 .contact-page select:focus,
 .contact-page textarea:focus {
   outline: none;
-  border-bottom-color: var(--maroon);
+  border-bottom-color: var(--accent);
 }
 .contact-page label:focus-within {
-  color: var(--maroon);
+  color: var(--accent);
 }
 .contact-page textarea {
   resize: vertical;
@@ -2412,7 +2463,7 @@ dialog.mobile-menu {
   padding-block: 16px;
   font-size: 12px;
   letter-spacing: 0.04em;
-  color: var(--maroon);
+  color: var(--accent);
 }
 .contact-page button[type='submit'] {
   justify-self: start;
@@ -2434,7 +2485,7 @@ dialog.mobile-menu {
     gap 0.3s var(--ease);
 }
 .contact-page button[type='submit']:hover {
-  background: var(--maroon);
+  background: var(--accent-deep);
   gap: 20px;
 }
 .contact-page small {
@@ -2450,7 +2501,7 @@ dialog.mobile-menu {
   border-top: 1px solid var(--line);
 }
 .form-success svg {
-  color: var(--maroon);
+  color: var(--accent);
 }
 .form-success h2 {
   margin: 0;
@@ -2477,8 +2528,8 @@ dialog.mobile-menu {
     border-color 0.24s var(--ease);
 }
 .form-success button:hover {
-  color: var(--maroon);
-  border-color: var(--maroon);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 /* ================================================================
@@ -2518,7 +2569,7 @@ dialog.mobile-menu {
   inset-inline-start: 0;
   width: 0;
   height: 1px;
-  background: var(--maroon);
+  background: var(--accent);
   transition: width 0.55s var(--ease);
 }
 .notfound-links a:hover {
@@ -2552,7 +2603,7 @@ dialog.mobile-menu {
 }
 .entity-page .section-kicker.light span:first-child,
 .band-ink .section-kicker.light span:first-child {
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 .entity-page .accent-rule {
   background: var(--entity-accent);
@@ -2612,7 +2663,7 @@ dialog.mobile-menu {
 }
 .entity-subnav-links a[aria-current='page'] {
   color: var(--ink);
-  border-bottom-color: var(--entity-accent, var(--maroon));
+  border-bottom-color: var(--entity-accent, var(--accent));
 }
 
 /* --- Sections index ------------------------------------------------ */
@@ -2641,7 +2692,7 @@ dialog.mobile-menu {
   inset-inline-start: 0;
   width: 0;
   height: 1px;
-  background: var(--entity-accent, var(--maroon));
+  background: var(--entity-accent, var(--accent));
   transition: width 0.55s var(--ease);
 }
 .entity-section-list a:hover,
@@ -2731,8 +2782,8 @@ dialog.mobile-menu {
     border-color 0.3s var(--ease);
 }
 .entity-next a:hover {
-  color: var(--ochre);
-  border-bottom-color: var(--ochre);
+  color: var(--accent-bright);
+  border-bottom-color: var(--accent-bright);
 }
 .entity-next strong {
   font-family: var(--font-display), sans-serif;
@@ -2827,7 +2878,7 @@ dialog.mobile-menu {
   font-size: var(--t-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 .lay-holding-hero-grid p {
   margin: 0;
@@ -2985,7 +3036,7 @@ dialog.mobile-menu {
 .holding-stat-row span {
   font-size: var(--t-label);
   letter-spacing: 0.08em;
-  color: var(--ochre);
+  color: var(--accent-bright);
   font-variant-numeric: tabular-nums;
 }
 .holding-stat-row h3 {
@@ -3098,7 +3149,7 @@ dialog.mobile-menu {
   gap: 18px;
 }
 .lay-hub-offer {
-  background: color-mix(in srgb, var(--forest), var(--dark) 32%);
+  background: var(--dark-deep);
   color: var(--on-dark);
   padding-block: clamp(64px, 8vw, 130px);
 }
@@ -3134,7 +3185,7 @@ dialog.mobile-menu {
 .hub-numbered-list span {
   font-size: var(--t-label);
   letter-spacing: 0.08em;
-  color: var(--ochre);
+  color: var(--accent-bright);
   font-variant-numeric: tabular-nums;
 }
 .hub-numbered-list strong {
@@ -3259,7 +3310,7 @@ dialog.mobile-menu {
   letter-spacing: -0.035em;
 }
 .lay-vb-hero h1 em {
-  color: var(--entity-accent);
+  color: var(--entity-accent-text, var(--accent-text));
 }
 .lay-vb-dark {
   background: var(--dark);
@@ -3400,8 +3451,8 @@ dialog.mobile-menu {
   height: 9px;
   border-radius: 50%;
   box-sizing: border-box;
-  background: var(--entity-accent, var(--maroon));
-  border: 1px solid var(--entity-accent, var(--maroon));
+  background: var(--entity-accent, var(--accent));
+  border: 1px solid var(--entity-accent, var(--accent));
   transition:
     background 0.4s var(--ease),
     border-color 0.4s var(--ease);
@@ -3411,8 +3462,8 @@ dialog.mobile-menu {
   border-color: var(--line-strong);
 }
 .js-motion .stage-track.is-in li::after {
-  background: var(--entity-accent, var(--maroon));
-  border-color: var(--entity-accent, var(--maroon));
+  background: var(--entity-accent, var(--accent));
+  border-color: var(--entity-accent, var(--accent));
   transition-delay: calc(var(--i, 0) * 0.16s);
 }
 .stage-track strong {
@@ -3443,8 +3494,8 @@ dialog.mobile-menu {
 .band-ink .stage-track li::after,
 .band-ink .stage-track.is-in li::after,
 .js-motion .band-ink .stage-track.is-in li::after {
-  background: var(--ochre);
-  border-color: var(--ochre);
+  background: var(--accent-bright);
+  border-color: var(--accent-bright);
 }
 .band-ink .stage-track p {
   color: var(--on-dark-50);
@@ -3580,7 +3631,7 @@ dialog.mobile-menu {
 .capital-offer-grid span {
   font-size: var(--t-label);
   letter-spacing: 0.08em;
-  color: var(--ochre);
+  color: var(--accent-bright);
   font-variant-numeric: tabular-nums;
 }
 .capital-offer-grid h3 {
@@ -3964,35 +4015,88 @@ dialog.mobile-menu {
    ENTITY MATERIALS — one system, six grounds. Colour and material
    carry the difference; the typography never changes.
    ================================================================ */
+/* Each company site re-points the accent roles and the grounds, so the
+   whole page — hero, bands, rules, buttons, highlights, footer — is in
+   that company's colour rather than the parent's maroon. The dark band
+   is the brand colour darkened only as far as cream text allows, so it
+   keeps its hue instead of falling back to neutral black. */
 .theme-holding {
-  --ground: #e8e7e3;
-  --ground-deep: #e0dfda;
-  --paper: #f5f5f2;
+  --accent: #5e2a2a;
+  --accent-deep: #5e2a2a;
+  --accent-text: #5e2a2a;
+  --accent-bright: #c8922e;
+  --entity-accent: #5e2a2a;
+  --entity-accent-text: #5e2a2a;
+  --dark: #391d1e;
+  --dark-deep: #1d1314;
+  --ground: #e6e0d9;
+  --ground-deep: #dcd5cd;
+  --paper: #f2eeea;
 }
 .theme-hub {
-  --ground: #ece5d8;
-  --ground-deep: #e4dccc;
-  --paper: #f7f2e8;
+  --accent: #b85c38;
+  --accent-deep: #b15937;
+  --accent-text: #9e5133;
+  --accent-bright: #c47a5c;
+  --entity-accent: #b85c38;
+  --entity-accent-text: #9e5133;
+  --dark: #352018;
+  --dark-deep: #1b1412;
+  --ground: #ece3da;
+  --ground-deep: #e3d9ce;
+  --paper: #f5f0eb;
 }
 .theme-venture-building {
-  --ground: #eaeae6;
-  --ground-deep: #e2e2dd;
-  --paper: #f6f6f3;
+  --accent: #c8922e;
+  --accent-deep: #8e6b28;
+  --accent-text: #826226;
+  --accent-bright: #c8922e;
+  --entity-accent: #c8922e;
+  --entity-accent-text: #826226;
+  --dark: #2b2413;
+  --dark-deep: #181610;
+  --ground: #ede7d9;
+  --ground-deep: #e4dccd;
+  --paper: #f6f2ea;
 }
 .theme-capital {
-  --ground: #e8e4dd;
-  --ground-deep: #dfdbd2;
-  --paper: #f5f2ec;
+  --accent: #8a7b3b;
+  --accent-deep: #7e7138;
+  --accent-text: #726734;
+  --accent-bright: #998c54;
+  --entity-accent: #8a7b3b;
+  --entity-accent-text: #726734;
+  --dark: #272518;
+  --dark-deep: #151612;
+  --ground: #e9e5da;
+  --ground-deep: #e0dbce;
+  --paper: #f4f1eb;
 }
 .theme-business-services {
-  --ground: #ebe9e3;
-  --ground-deep: #e3e1da;
-  --paper: #f6f5f1;
+  --accent: #a98c6b;
+  --accent-deep: #826e56;
+  --accent-text: #76644f;
+  --accent-bright: #a98c6b;
+  --entity-accent: #a98c6b;
+  --entity-accent-text: #76644f;
+  --dark: #27241f;
+  --dark-deep: #161615;
+  --ground: #ebe6dd;
+  --ground-deep: #e2dcd1;
+  --paper: #f5f2ed;
 }
 .theme-foundation {
-  --ground: #e8e8db;
-  --ground-deep: #e0e0d1;
-  --paper: #f4f4ea;
+  --accent: #6e7a66;
+  --accent-deep: #6a7562;
+  --accent-text: #5f6959;
+  --accent-bright: #858e7d;
+  --entity-accent: #6e7a66;
+  --entity-accent-text: #5f6959;
+  --dark: #222622;
+  --dark-deep: #131615;
+  --ground: #e7e5dc;
+  --ground-deep: #dedbd1;
+  --paper: #f2f1ec;
 }
 
 /* ================================================================
@@ -4000,7 +4104,7 @@ dialog.mobile-menu {
    ================================================================ */
 /* A company site carries more navigation than the parent, so it folds
    into the menu earlier rather than crowding out the call to action. */
-@media (max-width: 1460px) {
+@media (max-width: 1320px) {
   .has-site-nav .site-nav {
     display: none;
   }
@@ -4119,8 +4223,8 @@ dialog.mobile-menu {
     transform: scaleY(1);
     background: linear-gradient(
       180deg,
-      var(--ochre),
-      color-mix(in srgb, var(--maroon), #e3b592 55%)
+      var(--accent-bright),
+      color-mix(in srgb, var(--accent), #e3b592 55%)
     );
   }
   .js-motion .journey-track::after {
@@ -4179,6 +4283,14 @@ dialog.mobile-menu {
   :root {
     --header-h: 68px;
     --header-h-compact: 58px;
+    --logo-h: 28px;
+    --logo-h-compact: 24px;
+  }
+  :root:has(.site-header[data-stacked]) {
+    --header-h: 92px;
+    --header-h-compact: 76px;
+    --logo-h: 58px;
+    --logo-h-compact: 48px;
   }
   .head-pair,
   .journey-heading,
@@ -4532,7 +4644,7 @@ dialog.mobile-menu {
    ACCESSIBILITY — non-negotiable
    ================================================================ */
 :focus-visible {
-  outline: 2px solid var(--entity-accent, var(--maroon));
+  outline: 2px solid var(--entity-accent, var(--accent));
   outline-offset: 3px;
   border-radius: 1px;
 }
@@ -4572,7 +4684,7 @@ dialog.mobile-menu {
 .nav-dropdown :focus-visible,
 .site-header .nav-dropdown :focus-visible,
 .site-header.is-scrolled .nav-dropdown :focus-visible {
-  outline-color: var(--maroon);
+  outline-color: var(--accent);
 }
 
 .skip-link {
@@ -4606,7 +4718,7 @@ dialog.mobile-menu {
 ::selection {
   background: color-mix(
     in srgb,
-    var(--entity-accent, var(--maroon)),
+    var(--entity-accent, var(--accent)),
     transparent 76%
   );
   color: inherit;
@@ -4759,7 +4871,7 @@ dialog.mobile-menu {
 }
 .page-contents a:hover {
   color: var(--ink);
-  border-bottom-color: var(--maroon);
+  border-bottom-color: var(--accent);
 }
 @media (max-width: 640px) {
   .page-contents-inner > span {
@@ -4858,7 +4970,7 @@ dialog.mobile-menu {
 .eco-mark {
   width: 7px;
   height: 7px;
-  background: var(--ochre);
+  background: var(--accent-bright);
   transform: rotate(45deg);
 }
 .eco-caret {
@@ -4881,7 +4993,7 @@ dialog.mobile-menu {
   background: var(--paper);
   color: var(--ink);
   border: 1px solid var(--hair);
-  border-top: 2px solid var(--maroon);
+  border-top: 2px solid var(--accent);
   box-shadow: 0 26px 64px rgba(20, 23, 26, 0.24);
 }
 .eco-panel-label {
@@ -4922,14 +5034,14 @@ dialog.mobile-menu {
   color: var(--ink-55);
 }
 .eco-panel a[aria-current] b {
-  color: var(--maroon);
+  color: var(--accent);
 }
 .eco-here {
   font-style: normal;
   font-size: 10px;
   letter-spacing: var(--track-label);
   text-transform: uppercase;
-  color: var(--maroon);
+  color: var(--accent);
 }
 .eco-trail {
   list-style: none;
@@ -4945,33 +5057,12 @@ dialog.mobile-menu {
   color: var(--on-dark-35);
 }
 .eco-trail .is-here {
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 
-/* --- The lockup: THARA | Capital ---------------------------------- */
-.wordmark.lockup {
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-}
-.wordmark.lockup > a {
-  display: inline-flex;
-  align-items: center;
-  gap: 13px;
-}
-.wordmark.lockup i {
-  font-style: normal;
-  font-weight: 400;
-  opacity: 0.4;
-  margin-inline: 12px;
-}
-.lockup-site {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: -0.01em;
-  text-transform: none;
-}
+/* The lockup used to be type — "THARA | Capital". It is now the
+   supplied artwork, which already carries the company name in both
+   languages; see .brand-logo. */
 .site-nav {
   gap: clamp(10px, 1.4vw, 22px);
 }
@@ -5008,7 +5099,7 @@ dialog.mobile-menu {
   font-size: 10px;
   letter-spacing: var(--track-label);
   text-transform: uppercase;
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 .eco-band ul {
   list-style: none;
@@ -5031,7 +5122,7 @@ dialog.mobile-menu {
   border-bottom-color: var(--on-dark-35);
 }
 .eco-band a[aria-current] {
-  color: var(--ochre);
+  color: var(--accent-bright);
 }
 .eco-bar :focus-visible {
   outline-color: #fff;
@@ -5055,18 +5146,18 @@ dialog.mobile-menu {
 .form-error {
   margin: 0;
   padding: 14px 16px;
-  background: color-mix(in srgb, var(--maroon), transparent 92%);
-  border-inline-start: 2px solid var(--maroon);
+  background: color-mix(in srgb, var(--danger), transparent 92%);
+  border-inline-start: 2px solid var(--danger);
   font-size: 14px;
   line-height: 1.5;
   color: var(--ink);
 }
 .form-error a {
-  color: var(--maroon);
+  color: var(--danger);
   border-bottom: 1px solid currentColor;
 }
 .contact-page [aria-invalid='true'] {
-  border-bottom-color: var(--maroon);
+  border-bottom-color: var(--danger);
   border-bottom-width: 2px;
 }
 .contact-page button[type='submit']:disabled {

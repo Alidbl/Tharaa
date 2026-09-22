@@ -6,7 +6,7 @@ import type { Locale } from '@/lib/entities';
 import { type Site, siteHref, siteName, sites } from '@/lib/sites';
 
 const copy = {
-  partOf: { en: 'Part of Thara', ar: 'جزء من ثرى' },
+  partOf: { en: 'Part of Thara', ar: 'جزء من ثرا' },
   switcher: { en: 'Switch site', ar: 'التنقل بين المواقع' },
   here: { en: 'You are here', ar: 'أنت هنا' },
 };

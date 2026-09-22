@@ -17,7 +17,7 @@ const copy = {
   },
   heroLead: {
     en: 'Thara connects entrepreneurship, venture building, capital, business services, community and social impact in one platform.',
-    ar: 'تجمع ثرى ريادة الأعمال وبناء المشاريع ورأس المال وخدمات الأعمال والمجتمع والأثر الاجتماعي في منصة واحدة.',
+    ar: 'تجمع ثرا ريادة الأعمال وبناء المشاريع ورأس المال وخدمات الأعمال والمجتمع والأثر الاجتماعي في منصة واحدة.',
   },
   scroll: { en: 'Explore the ecosystem', ar: 'استكشف المنظومة' },
   established: {
@@ -61,7 +61,7 @@ const copy = {
   },
   ecoLead: {
     en: 'Thara brings the capabilities needed to build, fund and grow businesses into one homegrown ecosystem — designed around the journey, not the silos.',
-    ar: 'تجمع ثرى القدرات اللازمة لبناء الأعمال وتمويلها ونموها في منظومة محلية واحدة — مصممة حول الرحلة لا حول الفواصل.',
+    ar: 'تجمع ثرا القدرات اللازمة لبناء الأعمال وتمويلها ونموها في منظومة محلية واحدة — مصممة حول الرحلة لا حول الفواصل.',
   },
   ecoLink: {
     en: 'See how the ecosystem works together',
@@ -75,7 +75,7 @@ const copy = {
   },
   placeLead: {
     en: 'Ajman gives Thara its character: entrepreneurial, connected and human in scale. From here, we build opportunities with relevance across the UAE and beyond.',
-    ar: 'تمنح عجمان ثرى طابعها: روح ريادية، وترابط، ومقياس إنساني. من هنا نبني فرصاً ذات أثر في الإمارات وما بعدها.',
+    ar: 'تمنح عجمان ثرا طابعها: روح ريادية، وترابط، ومقياس إنساني. من هنا نبني فرصاً ذات أثر في الإمارات وما بعدها.',
   },
   placeLink: { en: 'Discover our story', ar: 'اكتشف قصتنا' },
   placeFacts: {
@@ -94,7 +94,7 @@ const copy = {
   },
   audienceLead: {
     en: 'Choose the path that best describes you, and we’ll connect you with the right part of Thara.',
-    ar: 'اختر المسار الذي يصفك، وسنوصلك بالجزء المناسب من ثرى.',
+    ar: 'اختر المسار الذي يصفك، وسنوصلك بالجزء المناسب من ثرا.',
   },
 
   insightsLabel: { en: 'Insights & stories', ar: 'المعرفة والقصص' },
@@ -106,7 +106,7 @@ const copy = {
 
   closingKicker: {
     en: 'Build the next opportunity with Thara.',
-    ar: 'ابنِ الفرصة القادمة مع ثرى.',
+    ar: 'ابنِ الفرصة القادمة مع ثرا.',
   },
   closingTitle: {
     en: ['Let’s create', 'what comes next.'],

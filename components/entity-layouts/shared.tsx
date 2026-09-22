@@ -100,7 +100,12 @@ export function RelatedCapabilities({
           <Link
             href={siteHref(siteForEntity(item.slug) ?? parentSite, '', locale)}
             key={item.slug}
-            style={{ '--entity-accent': item.accent } as React.CSSProperties}
+            style={
+              {
+                '--entity-accent': item.accent,
+                '--entity-accent-text': item.accentText,
+              } as React.CSSProperties
+            }
           >
             <span>{String(i + 1).padStart(2, '0')}</span>
             <h3>

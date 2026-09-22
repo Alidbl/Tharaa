@@ -27,7 +27,7 @@ export const entitySections: Record<string, EntitySection[]> = {
       },
       intro: {
         en: 'Thara Holding exists to make six specialist capabilities behave as one platform: one strategy, one standard of delivery, one accountability for economic outcomes.',
-        ar: 'وُجدت ثرى القابضة لتجعل ست قدرات متخصصة تعمل كمنصة واحدة: استراتيجية واحدة، ومعيار تنفيذ واحد، ومسؤولية واحدة عن النتائج الاقتصادية.',
+        ar: 'وُجدت ثرا القابضة لتجعل ست قدرات متخصصة تعمل كمنصة واحدة: استراتيجية واحدة، ومعيار تنفيذ واحد، ومسؤولية واحدة عن النتائج الاقتصادية.',
       },
       blocks: {
         en: [
@@ -85,7 +85,7 @@ export const entitySections: Record<string, EntitySection[]> = {
       },
       intro: {
         en: 'Institutional and investment partners need to understand how decisions are made before they commit. Thara’s governance model is designed to be explainable, documented and consistent across entities.',
-        ar: 'يحتاج الشركاء المؤسسيون والاستثماريون إلى فهم طريقة اتخاذ القرار قبل الالتزام. صُمم نموذج حوكمة ثرى ليكون واضحاً وموثقاً ومتسقاً بين الكيانات.',
+        ar: 'يحتاج الشركاء المؤسسيون والاستثماريون إلى فهم طريقة اتخاذ القرار قبل الالتزام. صُمم نموذج حوكمة ثرا ليكون واضحاً وموثقاً ومتسقاً بين الكيانات.',
       },
       blocks: {
         en: [
@@ -129,7 +129,7 @@ export const entitySections: Record<string, EntitySection[]> = {
       },
       intro: {
         en: 'Thara is led by operators who have built, financed and scaled businesses in the UAE, alongside institutional leadership with a mandate for long-term economic development.',
-        ar: 'تُقاد ثرى بخبرات عملية بنت وموّلت وطوّرت أعمالاً في الإمارات، إلى جانب قيادة مؤسسية تحمل مهمة تنمية اقتصادية طويلة الأمد.',
+        ar: 'تُقاد ثرا بخبرات عملية بنت وموّلت وطوّرت أعمالاً في الإمارات، إلى جانب قيادة مؤسسية تحمل مهمة تنمية اقتصادية طويلة الأمد.',
       },
       blocks: {
         en: [
@@ -161,19 +161,19 @@ export const entitySections: Record<string, EntitySection[]> = {
           },
         ],
       },
-      cta: { en: 'Contact the Thara office', ar: 'تواصل مع مكتب ثرى' },
+      cta: { en: 'Contact the Thara office', ar: 'تواصل مع مكتب ثرا' },
       pending: true,
     },
     {
       slug: 'partnerships',
-      nav: { en: 'Partner with Thara', ar: 'الشراكة مع ثرى' },
+      nav: { en: 'Partner with Thara', ar: 'الشراكة مع ثرا' },
       title: {
         en: 'One partner. The whole ecosystem.',
         ar: 'شريك واحد. المنظومة بأكملها.',
       },
       intro: {
         en: 'Partners work with Thara because a single agreement can reach space, community, venture creation, capital, services and community impact at once.',
-        ar: 'يعمل الشركاء مع ثرى لأن اتفاقية واحدة يمكنها الوصول إلى المساحة والمجتمع وتأسيس المشاريع ورأس المال والخدمات والأثر المجتمعي في الوقت نفسه.',
+        ar: 'يعمل الشركاء مع ثرا لأن اتفاقية واحدة يمكنها الوصول إلى المساحة والمجتمع وتأسيس المشاريع ورأس المال والخدمات والأثر المجتمعي في الوقت نفسه.',
       },
       blocks: {
         en: [
@@ -219,7 +219,7 @@ export const entitySections: Record<string, EntitySection[]> = {
       },
       intro: {
         en: 'Thara Hub is built around who is in it. Founders, operators, investors and institutions share the same floor, which is how useful introductions actually happen.',
-        ar: 'بُني ثرى هب حول من يشغله. يجتمع المؤسسون والمشغلون والمستثمرون والمؤسسات في المكان نفسه، وهكذا تحدث التعريفات المفيدة فعلاً.',
+        ar: 'بُني ثرا هب حول من يشغله. يجتمع المؤسسون والمشغلون والمستثمرون والمؤسسات في المكان نفسه، وهكذا تحدث التعريفات المفيدة فعلاً.',
       },
       blocks: {
         en: [
@@ -278,7 +278,7 @@ export const entitySections: Record<string, EntitySection[]> = {
       },
       intro: {
         en: 'Membership covers more than a desk: it is access to the community, the programmes and the wider Thara capabilities behind the Hub.',
-        ar: 'العضوية أكثر من مكتب: هي وصول إلى المجتمع والبرامج وقدرات ثرى الأوسع التي تقف خلف ثرى هب.',
+        ar: 'العضوية أكثر من مكتب: هي وصول إلى المجتمع والبرامج وقدرات ثرا الأوسع التي تقف خلف ثرا هب.',
       },
       blocks: {
         en: [
@@ -394,7 +394,7 @@ export const entitySections: Record<string, EntitySection[]> = {
           },
           {
             title: 'الجاهزية لرأس المال',
-            text: 'تهيئة العمل ليُقيَّم بشكل صحيح، بالتعاون مع ثرى كابيتال.',
+            text: 'تهيئة العمل ليُقيَّم بشكل صحيح، بالتعاون مع ثرا كابيتال.',
           },
         ],
       },
@@ -410,7 +410,7 @@ export const entitySections: Record<string, EntitySection[]> = {
       },
       intro: {
         en: 'Events at the Hub exist to create useful contact between people who can help each other — founders, buyers, investors, institutions and specialists.',
-        ar: 'تهدف فعاليات ثرى هب إلى خلق تواصل مفيد بين من يمكنهم مساعدة بعضهم: مؤسسون ومشترون ومستثمرون ومؤسسات ومتخصصون.',
+        ar: 'تهدف فعاليات ثرا هب إلى خلق تواصل مفيد بين من يمكنهم مساعدة بعضهم: مؤسسون ومشترون ومستثمرون ومؤسسات ومتخصصون.',
       },
       blocks: {
         en: [
@@ -430,7 +430,7 @@ export const entitySections: Record<string, EntitySection[]> = {
         ar: [
           {
             title: 'جلسات المجتمع',
-            text: 'لقاءات منتظمة تحفظ لثرى هب طابعه كمكان يعرف الناس فيه بعضهم.',
+            text: 'لقاءات منتظمة تحفظ لثرا هب طابعه كمكان يعرف الناس فيه بعضهم.',
           },
           {
             title: 'فعاليات القطاعات والشركاء',
@@ -438,7 +438,7 @@ export const entitySections: Record<string, EntitySection[]> = {
           },
           {
             title: 'استضف فعاليتك',
-            text: 'يمكن لثرى هب استضافة لقاءات خارجية تضيف قيمة للمجتمع.',
+            text: 'يمكن لثرا هب استضافة لقاءات خارجية تضيف قيمة للمجتمع.',
           },
         ],
       },
@@ -446,14 +446,14 @@ export const entitySections: Record<string, EntitySection[]> = {
     },
     {
       slug: 'visit',
-      nav: { en: 'Visit the Hub', ar: 'زُر ثرى هب' },
+      nav: { en: 'Visit the Hub', ar: 'زُر ثرا هب' },
       title: {
         en: 'Come and see it properly.',
         ar: 'تعال وشاهده على أرض الواقع.',
       },
       intro: {
         en: 'The fastest way to understand Thara is to walk through it. Arrange a visit and we will show you the space, the community and the capabilities behind it.',
-        ar: 'أسرع طريقة لفهم ثرى هي أن تزورها. رتّب زيارة وسنعرّفك على المساحة والمجتمع والقدرات التي تقف خلفهما.',
+        ar: 'أسرع طريقة لفهم ثرا هي أن تزورها. رتّب زيارة وسنعرّفك على المساحة والمجتمع والقدرات التي تقف خلفهما.',
       },
       blocks: {
         en: [
@@ -576,7 +576,7 @@ export const entitySections: Record<string, EntitySection[]> = {
           },
           {
             title: 'البناء والإطلاق',
-            text: 'تكوين الفريق وتأسيس العمليات عبر خدمات ثرى المشتركة، ثم الدخول إلى السوق.',
+            text: 'تكوين الفريق وتأسيس العمليات عبر خدمات ثرا المشتركة، ثم الدخول إلى السوق.',
             items: [
               'فريق التأسيس',
               'التأسيس التشغيلي',
@@ -660,7 +660,7 @@ export const entitySections: Record<string, EntitySection[]> = {
         ar: [
           {
             title: 'ما سيُنشر',
-            text: 'المشروع، والحاجة التي يعالجها، ومرحلته، والدور الذي لعبته ثرى في تأسيسه.',
+            text: 'المشروع، والحاجة التي يعالجها، ومرحلته، والدور الذي لعبته ثرا في تأسيسه.',
           },
           {
             title: 'ما لن نفعله',
@@ -701,7 +701,7 @@ export const entitySections: Record<string, EntitySection[]> = {
         ar: [
           {
             title: 'ما ترسله',
-            text: 'الحاجة التي رصدتها، ولماذا أنت جدير بها، وما تريده من ثرى.',
+            text: 'الحاجة التي رصدتها، ولماذا أنت جدير بها، وما تريده من ثرا.',
           },
           {
             title: 'ما يحدث بعد ذلك',
@@ -727,7 +727,7 @@ export const entitySections: Record<string, EntitySection[]> = {
       },
       intro: {
         en: 'Thara Capital invests where we understand the operating reality of the business — and where the rest of the ecosystem can genuinely improve its odds.',
-        ar: 'تستثمر ثرى كابيتال حيث نفهم الواقع التشغيلي للعمل، وحيث يمكن لبقية المنظومة أن تحسّن فرص نجاحه فعلاً.',
+        ar: 'تستثمر ثرا كابيتال حيث نفهم الواقع التشغيلي للعمل، وحيث يمكن لبقية المنظومة أن تحسّن فرص نجاحه فعلاً.',
       },
       blocks: {
         en: [
@@ -751,7 +751,7 @@ export const entitySections: Record<string, EntitySection[]> = {
           },
           {
             title: 'كيف ندعم بعد الاستثمار',
-            text: 'وصول إلى خدمات ثرى ومجتمعها وقدرات بناء المشاريع، ليكون الدعم تشغيلياً لا استشارياً.',
+            text: 'وصول إلى خدمات ثرا ومجتمعها وقدرات بناء المشاريع، ليكون الدعم تشغيلياً لا استشارياً.',
           },
           {
             title: 'ما نتجنبه',
@@ -767,7 +767,7 @@ export const entitySections: Record<string, EntitySection[]> = {
       nav: { en: 'For founders', ar: 'للمؤسسين' },
       title: {
         en: 'What raising from Thara looks like.',
-        ar: 'كيف يبدو التمويل من ثرى.',
+        ar: 'كيف يبدو التمويل من ثرا.',
       },
       intro: {
         en: 'We try to be a straightforward counterpart: clear process, direct feedback, and a decision you can plan around.',
@@ -845,7 +845,7 @@ export const entitySections: Record<string, EntitySection[]> = {
         ],
         ar: [
           {
-            title: 'لماذا الاستثمار المشترك مع ثرى',
+            title: 'لماذا الاستثمار المشترك مع ثرا',
             text: 'فرص محلية المصدر، ورؤية تشغيلية، ومنصة قادرة على دعم الشركة بعد التمويل.',
           },
           {
@@ -858,7 +858,7 @@ export const entitySections: Record<string, EntitySection[]> = {
           },
         ],
       },
-      cta: { en: 'Connect with Thara Capital', ar: 'تواصل مع ثرى كابيتال' },
+      cta: { en: 'Connect with Thara Capital', ar: 'تواصل مع ثرا كابيتال' },
       pending: true,
     },
     {
@@ -870,7 +870,7 @@ export const entitySections: Record<string, EntitySection[]> = {
       },
       intro: {
         en: 'Portfolio disclosure follows completion, not intention. Each holding will be listed here with its stage and the nature of Thara’s involvement.',
-        ar: 'يتبع الإفصاح عن المحفظة إتمام الاستثمار لا النية. سيُدرج كل استثمار هنا مع مرحلته وطبيعة مشاركة ثرى.',
+        ar: 'يتبع الإفصاح عن المحفظة إتمام الاستثمار لا النية. سيُدرج كل استثمار هنا مع مرحلته وطبيعة مشاركة ثرا.',
       },
       blocks: {
         en: [
@@ -890,7 +890,7 @@ export const entitySections: Record<string, EntitySection[]> = {
         ar: [
           {
             title: 'ما سيُدرج',
-            text: 'الشركة والقطاع والمرحلة وسنة الاستثمار والدعم الذي تقدمه ثرى.',
+            text: 'الشركة والقطاع والمرحلة وسنة الاستثمار والدعم الذي تقدمه ثرا.',
           },
           {
             title: 'ما يبقى خاصاً',
@@ -898,7 +898,7 @@ export const entitySections: Record<string, EntitySection[]> = {
           },
           {
             title: 'تقارير قادمة',
-            text: 'ستُنشر تقارير أداء دورية بما يتوافق مع الإفصاحات المسموح بها لثرى.',
+            text: 'ستُنشر تقارير أداء دورية بما يتوافق مع الإفصاحات المسموح بها لثرا.',
           },
         ],
       },
@@ -938,15 +938,15 @@ export const entitySections: Record<string, EntitySection[]> = {
           { title: 'فصل المهام', text: 'من يجد الفرص لا يقرر تمويلها بمفرده.' },
           {
             title: 'تعارض المصالح',
-            text: 'تُفصح علاقات المنظومة وتُدار، خصوصاً حين تتلقى الشركة خدمات من ثرى أيضاً.',
+            text: 'تُفصح علاقات المنظومة وتُدار، خصوصاً حين تتلقى الشركة خدمات من ثرا أيضاً.',
           },
           {
             title: 'الوضع التنظيمي',
-            text: 'سيُذكر هنا بوضوح الوضع التنظيمي لثرى كابيتال والأنشطة المسموح بها بعد اعتمادها.',
+            text: 'سيُذكر هنا بوضوح الوضع التنظيمي لثرا كابيتال والأنشطة المسموح بها بعد اعتمادها.',
           },
         ],
       },
-      cta: { en: 'Contact Thara Capital', ar: 'تواصل مع ثرى كابيتال' },
+      cta: { en: 'Contact Thara Capital', ar: 'تواصل مع ثرا كابيتال' },
       pending: true,
     },
     {
@@ -1137,11 +1137,11 @@ export const entitySections: Record<string, EntitySection[]> = {
       nav: { en: 'For portfolio companies', ar: 'لشركات المحفظة' },
       title: {
         en: 'Shared capability for Thara companies.',
-        ar: 'قدرات مشتركة لشركات ثرى.',
+        ar: 'قدرات مشتركة لشركات ثرا.',
       },
       intro: {
         en: 'Companies built or backed by Thara start with an operating platform in place, which is a real advantage in the first two years.',
-        ar: 'تبدأ الشركات التي تبنيها ثرى أو تستثمر فيها بمنصة تشغيلية جاهزة، وهي ميزة حقيقية في أول عامين.',
+        ar: 'تبدأ الشركات التي تبنيها ثرا أو تستثمر فيها بمنصة تشغيلية جاهزة، وهي ميزة حقيقية في أول عامين.',
       },
       blocks: {
         en: [
@@ -1383,7 +1383,7 @@ export const entitySections: Record<string, EntitySection[]> = {
           },
           {
             title: 'ما نقدمه',
-            text: 'تمويلاً، ووصولاً إلى ثرى هب، وإرشاداً من مشغّلين، وقدرات المنظومة العملية.',
+            text: 'تمويلاً، ووصولاً إلى ثرا هب، وإرشاداً من مشغّلين، وقدرات المنظومة العملية.',
           },
           {
             title: 'ما نطلبه',
@@ -1499,10 +1499,10 @@ export const relatedCapabilities: Record<string, string[]> = {
 export const sectionLabels = {
   inThisSection: { en: 'In this section', ar: 'في هذا القسم' },
   overview: { en: 'Overview', ar: 'نظرة عامة' },
-  related: { en: 'Related Thara capabilities', ar: 'قدرات ثرى المرتبطة' },
+  related: { en: 'Related Thara capabilities', ar: 'قدرات ثرا المرتبطة' },
   relatedLead: {
     en: 'No single entity works alone. These are the parts of Thara most often involved alongside this one.',
-    ar: 'لا يعمل أي كيان بمعزل. هذه أجزاء ثرى التي تشارك عادةً إلى جانب هذا الكيان.',
+    ar: 'لا يعمل أي كيان بمعزل. هذه أجزاء ثرا التي تشارك عادةً إلى جانب هذا الكيان.',
   },
   next: { en: 'Next', ar: 'التالي' },
   backToEntity: { en: 'Back to overview', ar: 'العودة إلى النظرة العامة' },

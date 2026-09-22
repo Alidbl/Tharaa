@@ -20,7 +20,12 @@ export function CapitalLayout({ entity, locale }: LayoutProps) {
       id="main"
       tabIndex={-1}
       className={`entity-page lay-capital theme-${entity.slug}`}
-      style={{ '--entity-accent': entity.accent } as React.CSSProperties}
+      style={
+        {
+          '--entity-accent': entity.accent,
+          '--entity-accent-text': entity.accentText,
+        } as React.CSSProperties
+      }
     >
       <section className="lay-capital-hero">
         <SiteHeader locale={locale} entitySlug={entity.slug} />

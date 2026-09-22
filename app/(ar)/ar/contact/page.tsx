@@ -3,8 +3,8 @@ import { alternates } from '@/lib/seo';
 import { ContactPage } from '@/components/contact-page';
 
 export const metadata: Metadata = {
-  title: 'تواصل معنا — ثرى',
-  description: 'ابدأ محادثة مع الفريق المناسب في منظومة ثرى.',
+  title: 'تواصل معنا — ثرا',
+  description: 'ابدأ محادثة مع الفريق المناسب في منظومة ثرا.',
   alternates: alternates('/contact', 'ar'),
 };
 

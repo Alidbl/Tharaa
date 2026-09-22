@@ -19,7 +19,7 @@ const plates: Record<
     frame: 'courtyard',
     caption: {
       en: 'Ajman, United Arab Emirates — where Thara begins.',
-      ar: 'عجمان، الإمارات العربية المتحدة — حيث تبدأ ثرى.',
+      ar: 'عجمان، الإمارات العربية المتحدة — حيث تبدأ ثرا.',
     },
   },
   impact: {
@@ -48,7 +48,7 @@ const plates: Record<
 const copy = {
   contents: { en: 'On this page', ar: 'في هذه الصفحة' },
   ctaKicker: { en: 'Start here', ar: 'ابدأ من هنا' },
-  ctaAction: { en: 'Contact Thara', ar: 'تواصل مع ثرى' },
+  ctaAction: { en: 'Contact Thara', ar: 'تواصل مع ثرا' },
 };
 
 export function ContentPage({
@@ -73,7 +73,7 @@ export function ContentPage({
           <h1>{page.title[locale]}</h1>
           <div className="content-hero-foot">
             <span>
-              {ar ? 'ثرى' : 'THARA'} / {page.slug.toUpperCase()}
+              {ar ? 'ثرا' : 'THARA'} / {page.slug.toUpperCase()}
             </span>
             <p>{page.intro[locale]}</p>
           </div>

@@ -14,7 +14,12 @@ export function VentureBuildingLayout({ entity, locale }: LayoutProps) {
       id="main"
       tabIndex={-1}
       className={`entity-page lay-vb theme-${entity.slug}`}
-      style={{ '--entity-accent': entity.accent } as React.CSSProperties}
+      style={
+        {
+          '--entity-accent': entity.accent,
+          '--entity-accent-text': entity.accentText,
+        } as React.CSSProperties
+      }
     >
       <section className="lay-vb-hero">
         <SiteHeader locale={locale} tone="dark" entitySlug={entity.slug} />

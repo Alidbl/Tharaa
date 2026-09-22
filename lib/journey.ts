@@ -87,11 +87,11 @@ export const journeyCopy = {
   },
   lead: {
     en: 'Thara’s entities work as one connected system, meeting businesses wherever they are and helping them move forward — without starting over at every stage.',
-    ar: 'تعمل كيانات ثرى كنظام واحد مترابط، تلتقي بالأعمال أينما كانت وتساعدها على المضي قدماً — دون أن تبدأ من جديد في كل مرحلة.',
+    ar: 'تعمل كيانات ثرا كنظام واحد مترابط، تلتقي بالأعمال أينما كانت وتساعدها على المضي قدماً — دون أن تبدأ من جديد في كل مرحلة.',
   },
   governance: {
     en: 'Thara Holding governs the whole journey: one strategy, one standard of delivery, one record of the relationship.',
-    ar: 'تتولى ثرى القابضة حوكمة الرحلة بأكملها: استراتيجية واحدة، ومعيار تنفيذ واحد، وسجل واحد للعلاقة.',
+    ar: 'تتولى ثرا القابضة حوكمة الرحلة بأكملها: استراتيجية واحدة، ومعيار تنفيذ واحد، وسجل واحد للعلاقة.',
   },
   ledBy: { en: 'Led by', ar: 'بقيادة' },
 } satisfies Record<string, unknown>;

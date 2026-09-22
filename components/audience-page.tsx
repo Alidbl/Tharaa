@@ -9,9 +9,9 @@ import { SiteFooter } from './site-footer';
 type Audience = (typeof audiences)[number];
 
 const copy = {
-  eyebrow: { en: 'Your path through Thara', ar: 'مسارك في ثرى' },
+  eyebrow: { en: 'Your path through Thara', ar: 'مسارك في ثرا' },
   masthead: { en: 'WHO WE WORK WITH', ar: 'من نخدم' },
-  helpLabel: { en: 'How Thara can help', ar: 'كيف يمكن لثرى مساعدتك' },
+  helpLabel: { en: 'How Thara can help', ar: 'كيف يمكن لثرا مساعدتك' },
   helpTitle: {
     en: ['One ecosystem,', 'shaped around your need.'],
     ar: ['منظومة واحدة،', 'مصممة حول احتياجك.'],
@@ -81,7 +81,10 @@ export function AudiencePage({
                 )}
                 key={entity.slug}
                 style={
-                  { '--entity-accent': entity.accent } as React.CSSProperties
+                  {
+                    '--entity-accent': entity.accent,
+                    '--entity-accent-text': entity.accentText,
+                  } as React.CSSProperties
                 }
               >
                 <span>{String(index + 1).padStart(2, '0')}</span>

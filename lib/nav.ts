@@ -14,7 +14,7 @@ export function navGroups(locale: Locale): NavGroup[] {
   const pre = locale === 'ar' ? '/ar' : '';
   return [
     {
-      label: { en: 'About Thara', ar: 'عن ثرى' },
+      label: { en: 'About Thara', ar: 'عن ثرا' },
       href: `${pre}/about`,
       links: [
         { href: `${pre}/about`, label: { en: 'Our story', ar: 'قصتنا' } },
@@ -29,7 +29,7 @@ export function navGroups(locale: Locale): NavGroup[] {
       ],
     },
     {
-      label: { en: 'Our Ecosystem', ar: 'منظومة ثرى' },
+      label: { en: 'Our Ecosystem', ar: 'منظومة ثرا' },
       href: `${pre}/ecosystem`,
       links: [
         {
@@ -114,7 +114,7 @@ export const t = {
   contactShort: { en: 'Contact', ar: 'تواصل معنا' },
   menu: { en: 'Menu', ar: 'القائمة' },
   close: { en: 'Close', ar: 'إغلاق' },
-  brand: { en: 'THARA', ar: 'ثرى' },
+  brand: { en: 'THARA', ar: 'ثرا' },
   otherLanguage: { en: 'العربية', ar: 'English' },
   ecosystem: { en: 'Ecosystem', ar: 'المنظومة' },
   explore: { en: 'Explore', ar: 'استكشف' },

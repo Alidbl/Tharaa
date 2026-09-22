@@ -6,7 +6,15 @@ export type Entity = {
   eyebrow: Record<Locale, string>;
   statement: Record<Locale, string>;
   summary: Record<Locale, string>;
+  /** The company's brand colour, taken from its logo artwork. */
   accent: string;
+  /**
+   * The same colour darkened until it clears 4.5:1 on the sand ground.
+   * Ochre and taupe are too light to read on sand at full strength, so
+   * an accent drawn as a glyph uses this one, while an accent drawn as
+   * a fill or a hairline keeps the brand value.
+   */
+  accentText: string;
   serves: Record<Locale, string[]>;
   offers: Record<Locale, { title: string; text: string }[]>;
   steps: Record<Locale, string[]>;
@@ -16,8 +24,9 @@ export type Entity = {
 export const entities: Entity[] = [
   {
     slug: 'holding',
-    accent: '#6e2638',
-    name: { en: 'Thara Holding', ar: 'ثرى القابضة' },
+    accent: '#5e2a2a',
+    accentText: '#5e2a2a',
+    name: { en: 'Thara Holding', ar: 'ثرا القابضة' },
     eyebrow: { en: 'Govern. Connect. Enable.', ar: 'حوكمة. تكامل. تمكين.' },
     statement: {
       en: 'The platform behind the whole ecosystem.',
@@ -25,7 +34,7 @@ export const entities: Entity[] = [
     },
     summary: {
       en: 'Thara Holding provides the direction, governance and shared platform that align every Thara entity around one economic mission.',
-      ar: 'توفر ثرى القابضة التوجه والحوكمة والمنصة المشتركة التي توحّد جميع كيانات ثرى حول مهمة اقتصادية واحدة.',
+      ar: 'توفر ثرا القابضة التوجه والحوكمة والمنصة المشتركة التي توحّد جميع كيانات ثرا حول مهمة اقتصادية واحدة.',
     },
     serves: {
       en: [
@@ -75,12 +84,13 @@ export const entities: Entity[] = [
       en: ['Align', 'Connect', 'Enable', 'Measure'],
       ar: ['مواءمة', 'ربط', 'تمكين', 'قياس'],
     },
-    cta: { en: 'Partner with Thara', ar: 'شارك ثرى' },
+    cta: { en: 'Partner with Thara', ar: 'شارك ثرا' },
   },
   {
     slug: 'hub',
-    accent: '#ad6248',
-    name: { en: 'Thara Hub', ar: 'ثرى هب' },
+    accent: '#b85c38',
+    accentText: '#a15234',
+    name: { en: 'Thara Hub', ar: 'ثرا هب' },
     eyebrow: { en: 'Meet. Work. Belong.', ar: 'تواصل. اعمل. انتمِ.' },
     statement: {
       en: 'A home for enterprise and exchange.',
@@ -88,7 +98,7 @@ export const entities: Entity[] = [
     },
     summary: {
       en: 'More than a place to work, Thara Hub is the physical heart of the ecosystem—bringing founders, businesses, investors and institutions together.',
-      ar: 'أكثر من مجرد مساحة للعمل؛ ثرى هب هو القلب النابض للمنظومة، حيث يجتمع المؤسسون والشركات والمستثمرون والمؤسسات.',
+      ar: 'أكثر من مجرد مساحة للعمل؛ ثرا هب هو القلب النابض للمنظومة، حيث يجتمع المؤسسون والشركات والمستثمرون والمؤسسات.',
     },
     serves: {
       en: [
@@ -132,12 +142,13 @@ export const entities: Entity[] = [
       en: ['Visit', 'Join', 'Connect', 'Grow'],
       ar: ['زُر', 'انضم', 'تواصل', 'انمُ'],
     },
-    cta: { en: 'Visit the Hub', ar: 'زُر ثرى هب' },
+    cta: { en: 'Visit the Hub', ar: 'زُر ثرا هب' },
   },
   {
     slug: 'venture-building',
-    accent: '#657565',
-    name: { en: 'Venture Building', ar: 'بناء المشاريع' },
+    accent: '#c8922e',
+    accentText: '#826226',
+    name: { en: 'Thara Ventures', ar: 'ثرا فينتشرز' },
     eyebrow: { en: 'Imagine. Validate. Build.', ar: 'ابتكر. اختبر. ابنِ.' },
     statement: {
       en: 'From promising idea to investable company.',
@@ -145,7 +156,7 @@ export const entities: Entity[] = [
     },
     summary: {
       en: 'Thara’s venture-building capability brings together market insight, founders, operators and capital to create businesses with the foundations to scale.',
-      ar: 'تجمع قدرة ثرى لبناء المشاريع بين فهم السوق والمؤسسين والمشغلين ورأس المال لتأسيس شركات قادرة على النمو.',
+      ar: 'تجمع قدرة ثرا لبناء المشاريع بين فهم السوق والمؤسسين والمشغلين ورأس المال لتأسيس شركات قادرة على النمو.',
     },
     serves: {
       en: [
@@ -199,8 +210,9 @@ export const entities: Entity[] = [
   },
   {
     slug: 'capital',
-    accent: '#532332',
-    name: { en: 'Thara Capital', ar: 'ثرى كابيتال' },
+    accent: '#8a7b3b',
+    accentText: '#746835',
+    name: { en: 'Thara Capital', ar: 'ثرا كابيتال' },
     eyebrow: { en: 'Invest. Support. Scale.', ar: 'استثمر. ادعم. وسّع.' },
     statement: {
       en: 'Capital connected to real enterprise.',
@@ -208,7 +220,7 @@ export const entities: Entity[] = [
     },
     summary: {
       en: 'Thara Capital connects high-potential businesses with disciplined investment and the wider capabilities they need to create enduring value.',
-      ar: 'تربط ثرى كابيتال الشركات الواعدة باستثمار منضبط وبالقدرات الأوسع التي تحتاجها لصناعة قيمة مستدامة.',
+      ar: 'تربط ثرا كابيتال الشركات الواعدة باستثمار منضبط وبالقدرات الأوسع التي تحتاجها لصناعة قيمة مستدامة.',
     },
     serves: {
       en: [
@@ -253,12 +265,13 @@ export const entities: Entity[] = [
       en: ['Source', 'Assess', 'Invest', 'Scale'],
       ar: ['استكشاف', 'تقييم', 'استثمار', 'توسع'],
     },
-    cta: { en: 'Connect with Capital', ar: 'تواصل مع ثرى كابيتال' },
+    cta: { en: 'Connect with Capital', ar: 'تواصل مع ثرا كابيتال' },
   },
   {
     slug: 'business-services',
-    accent: '#9b8066',
-    name: { en: 'Business Services', ar: 'خدمات الأعمال' },
+    accent: '#a98c6b',
+    accentText: '#786550',
+    name: { en: 'Thara Xperience', ar: 'ثرا إكسبيرينس' },
     eyebrow: { en: 'Operate. Strengthen. Grow.', ar: 'شغّل. عزّز. انمُ.' },
     statement: {
       en: 'The capabilities behind stronger businesses.',
@@ -266,7 +279,7 @@ export const entities: Entity[] = [
     },
     summary: {
       en: 'Thara’s shared-services capability gives startups, SMEs and portfolio companies practical expertise to build stronger operations and focus on growth.',
-      ar: 'تمنح خدمات ثرى المشتركة الشركات الناشئة والصغيرة وشركات المحفظة خبرات عملية لبناء عمليات أقوى والتركيز على النمو.',
+      ar: 'تمنح خدمات ثرا المشتركة الشركات الناشئة والصغيرة وشركات المحفظة خبرات عملية لبناء عمليات أقوى والتركيز على النمو.',
     },
     serves: {
       en: ['Startups', 'SMEs', 'Portfolio companies', 'Growing teams'],
@@ -309,8 +322,9 @@ export const entities: Entity[] = [
   },
   {
     slug: 'foundation',
-    accent: '#757658',
-    name: { en: 'Thara Foundation', ar: 'مؤسسة ثرى' },
+    accent: '#6e7a66',
+    accentText: '#616b5b',
+    name: { en: 'Thara Foundation', ar: 'ثرا فاونديشن' },
     eyebrow: { en: 'Include. Empower. Endure.', ar: 'أشرك. مكّن. أثّر.' },
     statement: {
       en: 'Enterprise that leaves a lasting legacy.',
@@ -318,7 +332,7 @@ export const entities: Entity[] = [
     },
     summary: {
       en: 'Thara Foundation extends the ecosystem’s value into the community, supporting inclusive opportunity, capability and a long-term culture of enterprise.',
-      ar: 'توسّع مؤسسة ثرى أثر المنظومة في المجتمع، وتدعم الفرص الشاملة وبناء القدرات وثقافة ريادة مستدامة.',
+      ar: 'توسّع مؤسسة ثرا أثر المنظومة في المجتمع، وتدعم الفرص الشاملة وبناء القدرات وثقافة ريادة مستدامة.',
     },
     serves: {
       en: ['Communities', 'Emerging talent', 'Nonprofits', 'Impact partners'],

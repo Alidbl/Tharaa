@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { ArrowUpRight, Globe2, Menu, X } from 'lucide-react';
 import type { Locale } from '@/lib/entities';
 import { navGroups, t } from '@/lib/nav';
+import { BrandLogo } from './brand-logo';
 import { EcosystemBar } from './ecosystem-bar';
 import {
   localeSwitchHref,
@@ -13,19 +14,9 @@ import {
   siteForEntity,
   siteHref,
   siteLabel,
+  siteName,
   siteNav,
 } from '@/lib/sites';
-
-export function TharaMark() {
-  return (
-    <span className="brand-mark" aria-hidden="true">
-      <span />
-      <span />
-      <span />
-      <span />
-    </span>
-  );
-}
 
 export function SiteHeader({
   locale,
@@ -39,7 +30,6 @@ export function SiteHeader({
 }) {
   const ar = locale === 'ar';
   const site = (entitySlug && siteForEntity(entitySlug)) || parentSite;
-  const label = siteLabel(site, locale);
   const ownNav = siteNav(site, locale);
   const groups = navGroups(locale);
   const home = siteHref(site, '', locale);
@@ -98,39 +88,27 @@ export function SiteHeader({
       </a>
       <EcosystemBar locale={locale} current={site} />
       <header
+        data-site={site.id}
+        data-stacked={site.entitySlug ? '' : undefined}
         className={`site-header tone-${tone}${scrolled ? ' is-scrolled' : ''}${
           ownNav.length > 0 ? ' has-site-nav' : ''
         }`}
       >
         <div className="header-left">
-          {label ? (
-            <span className="wordmark lockup">
-              <Link
-                href={siteHref(parentSite, '', locale)}
-                aria-label={ar ? 'ثرى — الصفحة الرئيسية' : 'Thara — home'}
-              >
-                <TharaMark />
-                <span>{t.brand[locale]}</span>
-              </Link>
-              <i aria-hidden="true">|</i>
-              <Link
-                className="lockup-site"
-                href={home}
-                aria-current={pathname === homePath ? 'page' : undefined}
-              >
-                {label}
-              </Link>
-            </span>
-          ) : (
-            <Link
-              className="wordmark"
-              href={home}
-              aria-label={ar ? 'ثرى — الصفحة الرئيسية' : 'Thara — home'}
-            >
-              <TharaMark />
-              <span>{t.brand[locale]}</span>
-            </Link>
-          )}
+          {/* The supplied lockup, as artwork. A company's is stacked
+              (mark over bilingual wordmark) and already names the
+              company, so it stands alone where the old text lockup read
+              "THARA | Capital"; the parent site's is horizontal. */}
+          <Link
+            className="site-logo"
+            href={home}
+            aria-current={pathname === homePath ? 'page' : undefined}
+          >
+            <BrandLogo
+              site={site.id}
+              label={`${siteName(site, locale)} — ${ar ? 'الصفحة الرئيسية' : 'home'}`}
+            />
+          </Link>
 
           {ownNav.length > 0 ? (
             <nav
@@ -242,9 +220,11 @@ export function SiteHeader({
       {open && (
         <dialog open className="mobile-menu" aria-label={t.menu[locale]}>
           <div className="mobile-menu-top shell">
-            <Link className="wordmark" href={home}>
-              <TharaMark />
-              <span>{t.brand[locale]}</span>
+            <Link className="site-logo" href={home}>
+              <BrandLogo
+                site={site.id}
+                label={`${siteName(site, locale)} — ${ar ? 'الصفحة الرئيسية' : 'home'}`}
+              />
             </Link>
             <button
               type="button"

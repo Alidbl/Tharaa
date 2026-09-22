@@ -18,7 +18,7 @@ export async function generateMetadata({
   return page
     ? {
         alternates: alternates(`/${slug}`, 'ar'),
-        title: `${page.eyebrow.ar} — ثرى`,
+        title: `${page.eyebrow.ar} — ثرا`,
         description: page.intro.ar,
       }
     : {};

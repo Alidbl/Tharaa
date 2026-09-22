@@ -25,9 +25,9 @@ export const layoutCopy: Record<string, Record<string, L>> = {
     tab: { en: 'Built for the people in it', ar: 'مبني لمن يشغله' },
     bandLead: {
       en: 'A working home in Ajman for founders, SMEs, investors and institutions — with the rest of Thara behind the door.',
-      ar: 'بيت عمل في عجمان للمؤسسين والشركات والمستثمرين والمؤسسات، وبقية ثرى خلف الباب.',
+      ar: 'بيت عمل في عجمان للمؤسسين والشركات والمستثمرين والمؤسسات، وبقية ثرا خلف الباب.',
     },
-    listLabel: { en: 'What the Hub offers', ar: 'ما يقدمه ثرى هب' },
+    listLabel: { en: 'What the Hub offers', ar: 'ما يقدمه ثرا هب' },
   },
   'venture-building': {
     heroLead: {
@@ -60,7 +60,7 @@ export const layoutCopy: Record<string, Record<string, L>> = {
     },
     turnLead: {
       en: 'Portfolio companies keep access to Thara’s services, community and venture-building capability — the things that actually change outcomes after the investment closes.',
-      ar: 'تحتفظ شركات المحفظة بوصولها إلى خدمات ثرى ومجتمعها وقدرات بناء المشاريع، وهي ما يغيّر النتائج فعلاً بعد إتمام الاستثمار.',
+      ar: 'تحتفظ شركات المحفظة بوصولها إلى خدمات ثرا ومجتمعها وقدرات بناء المشاريع، وهي ما يغيّر النتائج فعلاً بعد إتمام الاستثمار.',
     },
     stripLabel: { en: 'Who we work with', ar: 'مع من نعمل' },
   },

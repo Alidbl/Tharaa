@@ -6,25 +6,25 @@ import '../globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://thara.ae'),
-  title: 'ثرى — المنظومة بأكملها، من البداية إلى النهاية',
+  title: 'ثرا — المنظومة بأكملها، من البداية إلى النهاية',
   description:
     'منظومة متكاملة انطلقت من عجمان تجمع ريادة الأعمال وبناء المشاريع ورأس المال وخدمات الأعمال والأثر المستدام.',
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
       { url: '/favicon.ico', sizes: '16x16 32x32 48x48' },
+      { url: '/icon-512.png', type: 'image/png', sizes: '512x512' },
     ],
     apple: '/apple-touch-icon.png',
   },
   openGraph: {
-    title: 'ثرى — المنظومة بأكملها، من البداية إلى النهاية',
+    title: 'ثرا — المنظومة بأكملها، من البداية إلى النهاية',
     description: 'منظومة متكاملة لريادة الأعمال والاستثمار انطلقت من عجمان.',
     locale: 'ar',
     images: ['/og.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ثرى — المنظومة بأكملها، من البداية إلى النهاية',
+    title: 'ثرا — المنظومة بأكملها، من البداية إلى النهاية',
     description: 'منظومة متكاملة لريادة الأعمال والاستثمار انطلقت من عجمان.',
     images: ['/og.png'],
   },

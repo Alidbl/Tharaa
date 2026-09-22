@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { EntityPage } from '@/components/entity-page';
 import { getEntity } from '@/lib/entities';
 import { getSite, siteCanonical, subsidiarySites } from '@/lib/sites';
+import { siteIcons } from '@/lib/brand';
 
 export function generateStaticParams() {
   return subsidiarySites.map((site) => ({ site: site.id }));
@@ -18,7 +19,8 @@ export async function generateMetadata({
   const entity = site?.entitySlug ? getEntity(site.entitySlug) : undefined;
   if (!site || !entity) return {};
   return {
-    title: `${entity.name.ar} — ثرى`,
+    icons: siteIcons(site.id),
+    title: `${entity.name.ar} — ثرا`,
     description: entity.summary.ar,
     alternates: {
       canonical: siteCanonical(site, '', 'ar'),

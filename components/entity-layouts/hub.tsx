@@ -22,7 +22,12 @@ export function HubLayout({ entity, locale }: LayoutProps) {
       id="main"
       tabIndex={-1}
       className={`entity-page lay-hub theme-${entity.slug}`}
-      style={{ '--entity-accent': entity.accent } as React.CSSProperties}
+      style={
+        {
+          '--entity-accent': entity.accent,
+          '--entity-accent-text': entity.accentText,
+        } as React.CSSProperties
+      }
     >
       {/* The Hub opens on people, not on a headline. */}
       <section className="lay-hub-hero">
@@ -86,7 +91,7 @@ export function HubLayout({ entity, locale }: LayoutProps) {
       <section className="lay-hub-cards shell">
         <div className="section-kicker" data-reveal="fade">
           <span>02</span>
-          <span>{ar ? 'داخل ثرى هب' : 'Inside the Hub'}</span>
+          <span>{ar ? 'داخل ثرا هب' : 'Inside the Hub'}</span>
         </div>
         <div className="hub-card-grid" data-reveal>
           {entity.offers[locale].map((offer, index) => (

@@ -15,10 +15,10 @@ export const sitePages: SitePage[] = [
       en: 'A homegrown platform for enterprise.',
       ar: 'منصة محلية لصناعة الأعمال.',
     },
-    eyebrow: { en: 'About Thara', ar: 'عن ثرى' },
+    eyebrow: { en: 'About Thara', ar: 'عن ثرا' },
     intro: {
       en: 'Thara was created in Ajman around a simple belief: businesses achieve more when space, expertise, capital and community work as one.',
-      ar: 'انطلقت ثرى من عجمان انطلاقاً من إيمان بسيط: تحقق الأعمال نتائج أكبر عندما تعمل المساحة والخبرة ورأس المال والمجتمع كمنظومة واحدة.',
+      ar: 'انطلقت ثرا من عجمان انطلاقاً من إيمان بسيط: تحقق الأعمال نتائج أكبر عندما تعمل المساحة والخبرة ورأس المال والمجتمع كمنظومة واحدة.',
     },
     sections: {
       en: [
@@ -62,7 +62,7 @@ export const sitePages: SitePage[] = [
         },
         {
           title: 'لماذا عجمان',
-          text: 'تشكّل روح عجمان الريادية وسهولة الوصول وطابعها الإنساني أسلوب ثرى في بناء العلاقات والفرص.',
+          text: 'تشكّل روح عجمان الريادية وسهولة الوصول وطابعها الإنساني أسلوب ثرا في بناء العلاقات والفرص.',
         },
       ],
     },
@@ -77,7 +77,7 @@ export const sitePages: SitePage[] = [
     eyebrow: { en: 'Our impact', ar: 'أثرنا' },
     intro: {
       en: 'Thara measures success through stronger businesses, mobilized capital, meaningful employment and opportunity that reaches the wider community.',
-      ar: 'تقيس ثرى نجاحها من خلال أعمال أقوى، ورأس مال فاعل، وفرص عمل ذات معنى، وأثر يمتد إلى المجتمع.',
+      ar: 'تقيس ثرا نجاحها من خلال أعمال أقوى، ورأس مال فاعل، وفرص عمل ذات معنى، وأثر يمتد إلى المجتمع.',
     },
     sections: {
       en: [
@@ -120,7 +120,7 @@ export const sitePages: SitePage[] = [
     eyebrow: { en: 'Current opportunities', ar: 'الفرص الحالية' },
     intro: {
       en: 'Discover ways to build, grow, invest, partner and participate across the Thara ecosystem.',
-      ar: 'اكتشف طرق البناء والنمو والاستثمار والشراكة والمشاركة عبر منظومة ثرى.',
+      ar: 'اكتشف طرق البناء والنمو والاستثمار والشراكة والمشاركة عبر منظومة ثرا.',
     },
     sections: {
       en: [
@@ -156,7 +156,7 @@ export const sitePages: SitePage[] = [
         },
         {
           title: 'انضم إلى المجتمع',
-          text: 'للراغبين في المشاركة في البرامج والفعاليات وحياة ثرى هب.',
+          text: 'للراغبين في المشاركة في البرامج والفعاليات وحياة ثرا هب.',
         },
       ],
     },
@@ -199,7 +199,7 @@ export const sitePages: SitePage[] = [
         },
         {
           title: 'أخبار المنظومة',
-          text: 'تطورات وشراكات وأنشطة من مختلف أنحاء ثرى.',
+          text: 'تطورات وشراكات وأنشطة من مختلف أنحاء ثرا.',
         },
       ],
     },

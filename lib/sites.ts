@@ -218,7 +218,7 @@ export function siteCanonical(site: Site, path = '', locale: Locale = 'en') {
 }
 
 export function siteName(site: Site, locale: Locale): string {
-  if (!site.entitySlug) return locale === 'ar' ? 'ثرى' : 'Thara';
+  if (!site.entitySlug) return locale === 'ar' ? 'ثرا' : 'Thara';
   return getEntity(site.entitySlug)?.name[locale] ?? site.id;
 }
 
@@ -229,7 +229,7 @@ export function siteName(site: Site, locale: Locale): string {
 export function siteLabel(site: Site, locale: Locale): string | null {
   if (!site.entitySlug) return null;
   const full = siteName(site, locale);
-  return full.replace(/^Thara\s+/, '').replace(/^ثرى\s+/, '');
+  return full.replace(/^Thara\s+/, '').replace(/^ثرا\s+/, '');
 }
 
 export type SiteNavLink = { href: string; label: string };

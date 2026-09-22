@@ -4,7 +4,7 @@ export const organisationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Thara',
-  alternateName: 'ثرى',
+  alternateName: 'ثرا',
   url: 'https://thara.ae',
   logo: 'https://thara.ae/og.png',
   description:

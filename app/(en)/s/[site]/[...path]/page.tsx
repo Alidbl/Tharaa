@@ -4,6 +4,7 @@ import { EntitySectionPage } from '@/components/entity-section-page';
 import { getEntity } from '@/lib/entities';
 import { getEntitySection, getEntitySections } from '@/lib/entity-sections';
 import { getSite, siteCanonical, subsidiarySites } from '@/lib/sites';
+import { siteIcons } from '@/lib/brand';
 
 export function generateStaticParams() {
   return subsidiarySites.flatMap((site) =>
@@ -33,6 +34,7 @@ export async function generateMetadata({
   const { site, entity, section } = found;
   const inner = `/${path[0]}`;
   return {
+    icons: siteIcons(site.id),
     title: `${section.nav.en} — ${entity.name.en} — Thara`,
     description: section.intro.en,
     alternates: {

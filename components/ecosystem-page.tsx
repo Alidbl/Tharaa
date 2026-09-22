@@ -8,14 +8,14 @@ import { EcosystemComposition } from './ecosystem-composition';
 import { JourneySection } from './journey-section';
 
 const copy = {
-  eyebrow: { en: 'The Thara ecosystem', ar: 'منظومة ثرى' },
+  eyebrow: { en: 'The Thara ecosystem', ar: 'منظومة ثرا' },
   title: {
     en: ['Six capabilities.', 'One ecosystem.'],
     ar: ['ست قدرات.', 'منظومة واحدة.'],
   },
   intro: {
     en: 'Thara’s entities work as one operating model: space and community, venture building, capital, business services and social impact, under one governing platform.',
-    ar: 'تعمل كيانات ثرى كنظام تشغيلي واحد: مساحة ومجتمع، وبناء مشاريع، ورأس مال، وخدمات أعمال، وأثر مجتمعي، تحت حوكمة واحدة.',
+    ar: 'تعمل كيانات ثرا كنظام تشغيلي واحد: مساحة ومجتمع، وبناء مشاريع، ورأس مال، وخدمات أعمال، وأثر مجتمعي، تحت حوكمة واحدة.',
   },
   entitiesLabel: { en: 'The entities', ar: 'الكيانات' },
   entitiesTitle: {
@@ -57,7 +57,7 @@ export function EcosystemPage({ locale }: { locale: Locale }) {
           </h1>
           <div className="content-hero-foot">
             <span>
-              {ar ? 'ثرى' : 'THARA'} / {ar ? 'المنظومة' : 'ECOSYSTEM'}
+              {ar ? 'ثرا' : 'THARA'} / {ar ? 'المنظومة' : 'ECOSYSTEM'}
             </span>
             <p>{copy.intro[locale]}</p>
           </div>

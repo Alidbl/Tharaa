@@ -4,7 +4,7 @@ import { SiteFooter } from './site-footer';
 import { ContactForm } from './contact-form';
 
 const copy = {
-  eyebrow: { en: 'Connect with Thara', ar: 'تواصل مع ثرى' },
+  eyebrow: { en: 'Connect with Thara', ar: 'تواصل مع ثرا' },
   title: {
     en: ['Let’s start a', 'meaningful conversation.'],
     ar: ['لنبدأ محادثة', 'ذات معنى.'],

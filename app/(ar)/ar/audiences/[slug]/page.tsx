@@ -18,7 +18,7 @@ export async function generateMetadata({
   return audience
     ? {
         alternates: alternates(`/audiences/${slug}`, 'ar'),
-        title: `${audience.ar} — ثرى`,
+        title: `${audience.ar} — ثرا`,
         description: audience.needAr,
       }
     : {};
