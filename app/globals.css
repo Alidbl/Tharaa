@@ -368,13 +368,17 @@ h2 em,
 
 /* The section kicker: a numeral, a name, and a rule that runs the
    full width of the composition. No badge, no box. */
+/* Numeral, label, and one rule that runs out to the width of the
+   composition — the ::after below. The kicker used to draw a second,
+   full-width rule underneath as well, which read as a doubled line
+   rather than a single mark. The padding stays, so the rhythm below
+   the kicker is unchanged. */
 .section-kicker {
   display: grid;
   grid-template-columns: auto auto 1fr;
   align-items: baseline;
   gap: 18px;
   padding-bottom: 16px;
-  border-bottom: 1px solid var(--line);
   font-size: var(--t-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
@@ -392,7 +396,6 @@ h2 em,
   background: var(--hair);
 }
 .section-kicker.light {
-  border-color: var(--line-light);
   color: var(--on-dark-50);
 }
 .section-kicker.light span:first-child {
@@ -546,6 +549,11 @@ h2 em,
    ================================================================ */
 .ledger {
   display: grid;
+  /* Every register opens with its own space — .record, .audience-list,
+     .other-audience-list and .eco all carry one, and .path-intro hands
+     its own to .path-cards. Without it the ledger's top rule lands on
+     the descenders of the heading it follows. */
+  margin-top: clamp(36px, 4.4vw, 64px);
   border-top: 1px solid var(--line);
 }
 .ledger > * {
@@ -1345,12 +1353,20 @@ dialog.mobile-menu {
   margin-top: clamp(40px, 5vw, 76px);
   border-top: 1px solid var(--line);
 }
+/* Each record sits in its own column of air: the same gutter on both
+   sides of every divider, so a hairline never hugs the type it is meant
+   to separate. The two outer edges give that gutter up instead, which
+   keeps the register flush with the rule above it and with the heading. */
 .record > div {
   padding: clamp(24px, 2.6vw, 40px) clamp(16px, 2vw, 32px)
-    clamp(24px, 2.6vw, 38px) 0;
+    clamp(24px, 2.6vw, 38px);
   border-inline-end: 1px solid var(--hair);
 }
+.record > div:first-child {
+  padding-inline-start: 0;
+}
 .record > div:last-child {
+  padding-inline-end: 0;
   border-inline-end: 0;
 }
 .record dt {
@@ -1527,6 +1543,12 @@ dialog.mobile-menu {
   stroke-dasharray: none;
 }
 
+/* This ledger is a column of the .eco grid, set beside the armature
+   rather than after a heading, so it opens with the grid and takes
+   none of the register's own leading space. */
+.eco-ledger {
+  margin-top: 0;
+}
 .eco-ledger .ledger-name {
   font-size: clamp(24px, 2.6vw, 42px);
 }
@@ -1768,10 +1790,14 @@ dialog.mobile-menu {
   border-top: 1px solid var(--hair-light);
 }
 .place-facts li {
-  padding: 22px clamp(12px, 2vw, 28px) 4px 0;
+  padding: 22px clamp(12px, 2vw, 28px) 4px;
   border-inline-end: 1px solid var(--hair-light);
 }
+.place-facts li:first-child {
+  padding-inline-start: 0;
+}
 .place-facts li:last-child {
+  padding-inline-end: 0;
   border-inline-end: 0;
 }
 .place-facts span {
@@ -2909,6 +2935,9 @@ dialog.mobile-menu {
 }
 .purpose-card + .purpose-card {
   padding-inline-start: clamp(24px, 3vw, 56px);
+  /* The outer edge gives its gutter up, so the pair spans exactly the
+     rule above it — as the first card already does on the other side. */
+  padding-inline-end: 0;
 }
 .purpose-card span {
   font-size: var(--t-label);
@@ -3027,10 +3056,14 @@ dialog.mobile-menu {
   border-top: 1px solid var(--hair-light);
 }
 .holding-stat-row article {
-  padding: clamp(26px, 3vw, 44px) clamp(20px, 2.4vw, 40px) 0 0;
+  padding: clamp(26px, 3vw, 44px) clamp(20px, 2.4vw, 40px) 0;
   border-inline-end: 1px solid var(--hair-light);
 }
+.holding-stat-row article:first-child {
+  padding-inline-start: 0;
+}
 .holding-stat-row article:last-child {
+  padding-inline-end: 0;
   border-inline-end: 0;
 }
 .holding-stat-row span {
@@ -3217,10 +3250,14 @@ dialog.mobile-menu {
 }
 .hub-card-grid article {
   padding: clamp(26px, 3vw, 44px) clamp(20px, 2.4vw, 40px)
-    clamp(26px, 3vw, 40px) 0;
+    clamp(26px, 3vw, 40px);
   border-inline-end: 1px solid var(--hair);
 }
+.hub-card-grid article:first-child {
+  padding-inline-start: 0;
+}
 .hub-card-grid article:last-child {
+  padding-inline-end: 0;
   border-inline-end: 0;
 }
 .hub-card-grid span {
@@ -3622,10 +3659,14 @@ dialog.mobile-menu {
   border-top: 1px solid var(--hair-light);
 }
 .capital-offer-grid article {
-  padding: clamp(26px, 3vw, 44px) clamp(20px, 2.4vw, 40px) 0 0;
+  padding: clamp(26px, 3vw, 44px) clamp(20px, 2.4vw, 40px) 0;
   border-inline-end: 1px solid var(--hair-light);
 }
+.capital-offer-grid article:first-child {
+  padding-inline-start: 0;
+}
 .capital-offer-grid article:last-child {
+  padding-inline-end: 0;
   border-inline-end: 0;
 }
 .capital-offer-grid span {
@@ -3986,10 +4027,14 @@ dialog.mobile-menu {
 }
 .fd-focus-grid article {
   padding: clamp(26px, 3vw, 44px) clamp(20px, 2.4vw, 40px)
-    clamp(26px, 3vw, 40px) 0;
+    clamp(26px, 3vw, 40px);
   border-inline-end: 1px solid var(--hair);
 }
+.fd-focus-grid article:first-child {
+  padding-inline-start: 0;
+}
 .fd-focus-grid article:last-child {
+  padding-inline-end: 0;
   border-inline-end: 0;
 }
 .fd-focus-grid span {
@@ -4145,6 +4190,20 @@ dialog.mobile-menu {
   .fd-focus-grid article:nth-child(2n) {
     border-inline-end: 0;
   }
+  /* Two columns: the outer edges are now every odd and every even cell,
+     not the first and the last, so the gutters move with them. */
+  .holding-stat-row article:nth-child(2n + 1),
+  .hub-card-grid article:nth-child(2n + 1),
+  .capital-offer-grid article:nth-child(2n + 1),
+  .fd-focus-grid article:nth-child(2n + 1) {
+    padding-inline-start: 0;
+  }
+  .holding-stat-row article:nth-child(2n),
+  .hub-card-grid article:nth-child(2n),
+  .capital-offer-grid article:nth-child(2n),
+  .fd-focus-grid article:nth-child(2n) {
+    padding-inline-end: 0;
+  }
   /* A wrapped row needs a rule above it, or the grid reads as one broken
      column. The rule is drawn from the row's first cell and stretched
      across both columns, so it spans the grid rather than stopping
@@ -4190,6 +4249,14 @@ dialog.mobile-menu {
   .record > div:nth-child(-n + 2) {
     border-bottom: 1px solid var(--hair);
   }
+  /* Two columns: the row edges are now every odd and every even cell,
+     not the first and the last. */
+  .record > div:nth-child(2n + 1) {
+    padding-inline-start: 0;
+  }
+  .record > div:nth-child(2n) {
+    padding-inline-end: 0;
+  }
   .place-facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -4199,6 +4266,12 @@ dialog.mobile-menu {
   .place-facts li:nth-child(-n + 2) {
     border-bottom: 1px solid var(--hair-light);
     padding-bottom: 20px;
+  }
+  .place-facts li:nth-child(2n + 1) {
+    padding-inline-start: 0;
+  }
+  .place-facts li:nth-child(2n) {
+    padding-inline-end: 0;
   }
 }
 
@@ -4323,8 +4396,11 @@ dialog.mobile-menu {
   .purpose-card:first-child {
     border-inline-end: 0;
   }
+  /* Both selectors, because the adjacent-sibling rule that sets the
+     leading gutter at two columns outranks a bare .purpose-card. */
+  .purpose-card,
   .purpose-card + .purpose-card {
-    padding-inline-start: 0;
+    padding-inline: 0;
   }
   .entity-hero-foot {
     flex-direction: column;
@@ -4473,7 +4549,9 @@ dialog.mobile-menu {
   .place-facts li {
     border-inline-end: 0;
     border-bottom: 1px solid var(--hair);
-    padding-inline-end: 0;
+    /* One column: there is no divider left to clear, so every record
+       returns to the page margin. */
+    padding-inline: 0;
   }
   .place-facts li {
     border-bottom-color: var(--hair-light);
@@ -4501,7 +4579,9 @@ dialog.mobile-menu {
     border-top: 0;
     margin-top: 0;
     border-bottom: 1px solid var(--hair);
-    padding-inline-start: 0;
+    /* One column: no divider left to clear, so each cell returns to the
+       page margin on both sides. */
+    padding-inline: 0;
     padding-bottom: 28px;
   }
   /* At one column each cell already carries its own rule, and the
