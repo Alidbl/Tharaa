@@ -35,7 +35,7 @@
 
   /* --- Brand
      The six company colours, read straight out of the logo artwork in
-     /Logo 2: each file is a single flat colour, and these are those
+     /Logo 3: each file is a single flat colour, and these are those
      values. */
   --maroon: #5e2a2a; /* Holding, and the parent */
   --maroon-deep: #45201f;
@@ -752,12 +752,12 @@ h2 em,
 }
 
 /* --- The logo ------------------------------------------------------
-   The artwork is one flat colour on transparency, so it is drawn as an
-   alpha mask filled with currentColor. That is what lets a single file
-   sit on the transparent header over a photograph, on the pale scrolled
-   header and on the dark footer without an inverted second export.
-   aspect-ratio comes from the file, so the box is reserved before the
-   mask loads and the header never shifts. */
+   The artwork is one flat colour on transparency, and the supplied
+   colour and white exports (Logo 3) are the same shape, so it is drawn
+   as an alpha mask and only the fill changes: the company colour on a
+   pale ground, white on a dark one. aspect-ratio comes from the file,
+   so the box is reserved before the mask loads and the header never
+   shifts. */
 .brand-logo {
   display: block;
   height: var(--logo-h);
@@ -774,7 +774,16 @@ h2 em,
   mask-position: center;
   transition:
     height 0.4s var(--ease),
+    background-color 0.4s var(--ease),
     opacity 0.3s var(--ease);
+}
+/* Dark grounds: the bar while it is still transparent over the opening
+   photograph, the menu and the footer. It turns to the colour with the
+   bar as the page moves. */
+.site-header.tone-light:not(.is-scrolled) .brand-logo,
+.mobile-menu .brand-logo,
+.footer .brand-logo {
+  background-color: #fff;
 }
 .site-logo {
   display: inline-flex;

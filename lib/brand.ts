@@ -3,11 +3,11 @@ import type { SiteId } from './sites';
 /**
  * The brand assets.
  *
- * Every logo in Logo 2/ is a single flat colour on transparency, so the
- * artwork ships as an alpha mask rather than a picture: the shape comes
- * from the file and the colour from `currentColor`. One file therefore
- * serves the maroon header, the pale scrolled header and the dark
- * footer, and a company site never needs a second, inverted logo.
+ * Every logo in Logo 3/ is a single flat colour on transparency, and its
+ * white export is the same shape, so the artwork ships as an alpha mask
+ * rather than a picture: the shape comes from the file and the fill from
+ * CSS — the company colour on pale grounds, white on dark ones (see
+ * .brand-logo in globals.css). One file serves both.
  *
  * Intrinsic sizes are the real pixel dimensions of the exported files.
  * They are here so a lockup reserves its box before the mask loads —
@@ -36,8 +36,8 @@ export type BrandKey = SiteId;
 
 type BrandSet = {
   /**
-   * The flat colour the artwork is drawn in. The logo is shown in it on
-   * every ground, so this is also what a logo mask is filled with.
+   * The flat colour the artwork is drawn in, and what a logo mask is
+   * filled with on a pale ground. Dark grounds fill it white instead.
    */
   color: string;
   /** Mark over bilingual wordmark — the supplied lockup. */

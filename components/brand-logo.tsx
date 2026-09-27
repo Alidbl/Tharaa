@@ -4,13 +4,12 @@ import { brandFor } from '@/lib/brand';
 type LogoPart = 'lockup' | 'mark' | 'word';
 
 /**
- * A brand logo, drawn as an alpha mask filled with `currentColor`.
+ * A brand logo, drawn as an alpha mask.
  *
- * The artwork is flat single-colour, so masking rather than showing the
- * picture lets one file sit on the transparent header over a photograph,
- * on the pale scrolled header and on the dark footer without a second,
- * inverted export — and it keeps the logo the same colour as the type it
- * is set beside, including on a company site with its own accent.
+ * The artwork is flat single-colour and its white export is the same
+ * shape, so masking rather than showing the picture lets one file serve
+ * both: the company colour on the pale scrolled header, white on the
+ * transparent header over a photograph, in the menu and in the footer.
  *
  * `aspect-ratio` comes from the file's real dimensions so the box is
  * reserved before the mask loads and the header never shifts.
