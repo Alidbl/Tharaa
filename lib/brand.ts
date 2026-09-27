@@ -3,7 +3,7 @@ import type { SiteId } from './sites';
 /**
  * The brand assets.
  *
- * Every logo in Logo/ is a single flat colour on transparency, so the
+ * Every logo in Logo 2/ is a single flat colour on transparency, so the
  * artwork ships as an alpha mask rather than a picture: the shape comes
  * from the file and the colour from `currentColor`. One file therefore
  * serves the maroon header, the pale scrolled header and the dark
@@ -69,9 +69,9 @@ export const brand: Record<BrandKey, BrandSet> = {
   },
   holding: {
     color: '#5e2a2a',
-    lockup: asset('/brand/lockup-holding.png', 392, 480),
-    mark: asset('/brand/mark-holding.png', 276, 320),
-    word: asset('/brand/word-holding.png', 543, 200),
+    lockup: asset('/brand/lockup-holding.png', 450, 480),
+    mark: asset('/brand/mark-holding.png', 291, 320),
+    word: asset('/brand/word-holding.png', 588, 200),
     icon: {
       large: '/brand/icon-holding-512.png',
       touch: '/brand/icon-holding-180.png',
@@ -80,9 +80,9 @@ export const brand: Record<BrandKey, BrandSet> = {
   },
   hub: {
     color: '#b85c38',
-    lockup: asset('/brand/lockup-hub.png', 321, 480),
+    lockup: asset('/brand/lockup-hub.png', 361, 480),
     mark: asset('/brand/mark-hub.png', 276, 320),
-    word: asset('/brand/word-hub.png', 482, 200),
+    word: asset('/brand/word-hub.png', 468, 200),
     icon: {
       large: '/brand/icon-hub-512.png',
       touch: '/brand/icon-hub-180.png',
@@ -91,9 +91,9 @@ export const brand: Record<BrandKey, BrandSet> = {
   },
   ventures: {
     color: '#c8922e',
-    lockup: asset('/brand/lockup-venture-building.png', 456, 480),
+    lockup: asset('/brand/lockup-venture-building.png', 401, 480),
     mark: asset('/brand/mark-venture-building.png', 259, 320),
-    word: asset('/brand/word-venture-building.png', 685, 200),
+    word: asset('/brand/word-venture-building.png', 520, 200),
     icon: {
       large: '/brand/icon-venture-building-512.png',
       touch: '/brand/icon-venture-building-180.png',
@@ -102,9 +102,9 @@ export const brand: Record<BrandKey, BrandSet> = {
   },
   capital: {
     color: '#8a7b3b',
-    lockup: asset('/brand/lockup-capital.png', 360, 480),
+    lockup: asset('/brand/lockup-capital.png', 385, 480),
     mark: asset('/brand/mark-capital.png', 284, 320),
-    word: asset('/brand/word-capital.png', 509, 200),
+    word: asset('/brand/word-capital.png', 481, 200),
     icon: {
       large: '/brand/icon-capital-512.png',
       touch: '/brand/icon-capital-180.png',
@@ -113,9 +113,9 @@ export const brand: Record<BrandKey, BrandSet> = {
   },
   services: {
     color: '#a98c6b',
-    lockup: asset('/brand/lockup-business-services.png', 494, 480),
-    mark: asset('/brand/mark-business-services.png', 304, 320),
-    word: asset('/brand/word-business-services.png', 708, 200),
+    lockup: asset('/brand/lockup-business-services.png', 459, 480),
+    mark: asset('/brand/mark-business-services.png', 303, 320),
+    word: asset('/brand/word-business-services.png', 574, 200),
     icon: {
       large: '/brand/icon-business-services-512.png',
       touch: '/brand/icon-business-services-180.png',
@@ -124,9 +124,9 @@ export const brand: Record<BrandKey, BrandSet> = {
   },
   foundation: {
     color: '#6e7a66',
-    lockup: asset('/brand/lockup-foundation.png', 502, 480),
+    lockup: asset('/brand/lockup-foundation.png', 457, 480),
     mark: asset('/brand/mark-foundation.png', 292, 320),
-    word: asset('/brand/word-foundation.png', 798, 200),
+    word: asset('/brand/word-foundation.png', 608, 200),
     icon: {
       large: '/brand/icon-foundation-512.png',
       touch: '/brand/icon-foundation-180.png',
