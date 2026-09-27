@@ -2303,13 +2303,14 @@ dialog.mobile-menu {
 .audience-list a:focus-within::after {
   width: 100%;
 }
+/* Numeral, name, meaning and arrow all sit on the name's baseline, and
+   the meaning reserves two lines, so every row is the same height and
+   the rules fall at an even rhythm whether or not a line wraps. */
 .audience-list span {
   font-variant-numeric: tabular-nums;
   font-size: var(--t-label);
   letter-spacing: 0.08em;
   color: var(--ink-45);
-  align-self: start;
-  padding-top: 0.5em;
 }
 .audience-list a:hover span {
   color: var(--accent);
@@ -2324,12 +2325,14 @@ dialog.mobile-menu {
 .audience-list p {
   margin: 0;
   max-width: 46ch;
+  min-height: calc(2 * 1.6em);
   font-size: var(--t-body);
   line-height: 1.6;
   color: var(--ink-70);
 }
 .audience-list svg {
-  align-self: center;
+  /* The glyph ends ~5px above its box; drop it onto the baseline. */
+  margin-bottom: -5px;
   color: var(--ink-30);
   transition:
     transform 0.45s var(--ease),
@@ -4492,6 +4495,9 @@ dialog.mobile-menu {
   .entity-section-list p,
   .bs-list p {
     grid-column: 2 / -1;
+  }
+  .audience-list p {
+    min-height: 0;
   }
   .ledger svg,
   .path-cards svg,
